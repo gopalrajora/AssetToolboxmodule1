@@ -1,0 +1,1922 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  white-space:nowrap;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<script>
+function sortTable(n, asset_count) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("TableSort");
+  not_sorted = (table.mode == undefined) ? true : false;
+  table.column_sorted = (table.column_sorted == undefined) ? n : table.column_sorted;
+  table.mode = (table.mode == undefined || table.mode == 'desc') ? 'asc' : 'desc';
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = (table.mode == "asc") ? 'desc' : 'asc';
+  switching = true;
+
+  not_sorted = (!not_sorted && table.column_sorted == n) ? false : true;
+
+  // Set the sorting direction to ascending:
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+
+    switching = false;
+    rows = document.getElementById('TB' + asset_count).rows;
+    if (not_sorted) {
+      table.column_sorted = n;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 0; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        condition_1 = isNaN(x.innerText) && isNaN(y.innerText)
+        if (dir == "asc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) > parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) < parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    } else {
+      for (i = 0; i < (rows.length - 1); i++) {
+        rows[i].parentNode.insertBefore(rows[rows.length - 1], rows[i]);
+      }
+
+    }
+  }
+}
+</script>
+<link rel="shortcut icon" href="..\resources\logo_a.png">
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">ASSETS in PATTERN 4</p>
+<table class="center" id="TableSort">
+  
+            <thead>
+                <tr class="style_0" id="TD">
+                  <th>SYNTHETIC G. - LINES</th>
+                  <th onclick=sortTable(1,0)>name</th><th onclick=sortTable(2,0)>age_years</th><th onclick=sortTable(3,0)>H1_fail_prob</th><th onclick=sortTable(4,0)>H2_criticality</th><th onclick=sortTable(5,0)>H3_overload_percent_h_year</th>
+                </tr>
+            </thead>
+            <tbody id="TB0">
+            
+                <tr>
+                    <td></td><td>TBT39</td><td>19.013698630136982</td><td>0.004869660168587</td><td>0.12</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT55</td><td>5.005479452054795</td><td>0.0110067389355995</td><td>0.53</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT56</td><td>39.02739726027397</td><td>0.0089494452877388</td><td>0.18</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT70</td><td>34.02465753424657</td><td>0.0088630053981499</td><td>0.94</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT97</td><td>21.016438356164382</td><td>0.010651418435284</td><td>0.19</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT103</td><td>17.013698630136986</td><td>0.0057983424909487</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT107</td><td>33.02465753424657</td><td>0.0021051134466162</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT131</td><td>15.01095890410959</td><td>0.0119034132658714</td><td>0.33</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT159</td><td>11.008219178082191</td><td>0.0081529540236089</td><td>0.55</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT165</td><td>23.016438356164382</td><td>0.0045973953161648</td><td>0.25</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT178</td><td>16.01095890410959</td><td>0.0059757141048779</td><td>0.98</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT202</td><td>29.02191780821918</td><td>0.0097046518220432</td><td>0.5</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT241</td><td>32.02191780821918</td><td>0.0094949468901527</td><td>0.76</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT275</td><td>5.005479452054795</td><td>0.0135540257150962</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT292</td><td>7.005479452054795</td><td>0.013159219858214</td><td>0.66</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT385</td><td>23.016438356164382</td><td>0.0108561352135291</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT406</td><td>39.02739726027397</td><td>0.008484766008302</td><td>0.88</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT411</td><td>1.0027397260273974</td><td>0.013703503791537</td><td>0.58</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT414</td><td>2.0027397260273974</td><td>0.0141462260140341</td><td>0.95</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT433</td><td>30.02191780821918</td><td>0.0094994841340388</td><td>0.08</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT464</td><td>21.016438356164382</td><td>0.0042945999188602</td><td>0.19</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT491</td><td>28.019178082191782</td><td>0.0033848668322404</td><td>0.23</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT495</td><td>31.02191780821918</td><td>0.0024795138438296</td><td>0.73</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT501</td><td>2.0027397260273974</td><td>0.0141462260140341</td><td>0.51</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT512</td><td>37.02739726027397</td><td>0.002281748334064</td><td>0.91</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT524</td><td>7.005479452054795</td><td>0.0132050979721133</td><td>0.05</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT548</td><td>10.008219178082191</td><td>0.0128169270401223</td><td>0.95</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT558</td><td>13.01095890410959</td><td>0.0120280855430737</td><td>0.93</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT630</td><td>1.0027397260273974</td><td>0.0137585783591652</td><td>0.0</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT631</td><td>32.02191780821918</td><td>0.0091610944323985</td><td>0.68</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT690</td><td>38.02739726027397</td><td>0.0019364565271238</td><td>0.06</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT695</td><td>35.02465753424657</td><td>0.002310623276409</td><td>0.62</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT704</td><td>3.0027397260273974</td><td>0.0123934315658896</td><td>0.34</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT712</td><td>14.01095890410959</td><td>0.0070621351979675</td><td>0.66</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT812</td><td>5.005479452054795</td><td>0.01084269170406</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT825</td><td>19.013698630136982</td><td>0.004869660168587</td><td>0.83</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT936</td><td>26.019178082191782</td><td>0.0038548563503725</td><td>0.76</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT947</td><td>3.0027397260273974</td><td>0.0123007442726649</td><td>0.65</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT954</td><td>30.02191780821918</td><td>0.0031905872028965</td><td>0.35</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT970</td><td>21.016438356164382</td><td>0.0049232321209663</td><td>0.48</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT980</td><td>21.016438356164382</td><td>0.0049752392959916</td><td>0.69</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1014</td><td>39.02739726027397</td><td>0.0019095873427133</td><td>0.69</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1089</td><td>35.02465753424657</td><td>0.0019394298092095</td><td>0.88</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1100</td><td>17.013698630136986</td><td>0.0055098147581942</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1130</td><td>28.019178082191782</td><td>0.0028212778130272</td><td>0.01</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1131</td><td>27.019178082191782</td><td>0.0029912456545135</td><td>0.37</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1137</td><td>37.02739726027397</td><td>0.0020418571686842</td><td>0.16</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1239</td><td>17.013698630136986</td><td>0.0056522378780173</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1244</td><td>18.013698630136986</td><td>0.0052991408414316</td><td>0.2</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1252</td><td>25.019178082191782</td><td>0.0034048452699182</td><td>0.12</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1256</td><td>34.02465753424657</td><td>0.0021988694285577</td><td>0.02</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1344</td><td>1.0027397260273974</td><td>0.0136966349897672</td><td>0.53</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1375</td><td>29.02191780821918</td><td>0.0029025666200153</td><td>0.56</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1383</td><td>7.005479452054795</td><td>0.0097815918463165</td><td>0.68</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1396</td><td>30.02191780821918</td><td>0.0031905872028965</td><td>0.58</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1411</td><td>30.02191780821918</td><td>0.0031905872028965</td><td>0.11</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1416</td><td>22.016438356164382</td><td>0.0040082317400281</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1426</td><td>10.008219178082191</td><td>0.0085068532154811</td><td>0.57</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1430</td><td>30.02191780821918</td><td>0.0029598843051655</td><td>0.95</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1433</td><td>27.019178082191782</td><td>0.0033326461225472</td><td>0.0</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1454</td><td>23.016438356164382</td><td>0.0040976257299881</td><td>0.83</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1456</td><td>38.02739726027397</td><td>0.001631886133306</td><td>0.43</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1475</td><td>3.0027397260273974</td><td>0.0122638637382116</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1478</td><td>31.02191780821918</td><td>0.0023303504747885</td><td>0.73</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1491</td><td>4.002739726027397</td><td>0.0118481542894768</td><td>0.52</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1510</td><td>38.02739726027397</td><td>0.0017946409534512</td><td>0.6</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1539</td><td>30.02191780821918</td><td>0.0029598843051655</td><td>0.94</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1552</td><td>13.01095890410959</td><td>0.0071974014020428</td><td>0.03</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1561</td><td>36.02465753424657</td><td>0.0017347391057988</td><td>0.34</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1576</td><td>22.016438356164382</td><td>0.0044256809520179</td><td>0.14</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1621</td><td>21.016438356164382</td><td>0.0050809076023225</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1628</td><td>32.02191780821918</td><td>0.002662192899519</td><td>0.02</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1650</td><td>26.019178082191782</td><td>0.0036593860482365</td><td>0.25</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1663</td><td>26.019178082191782</td><td>0.0035193158848817</td><td>0.05</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1710</td><td>28.019178082191782</td><td>0.0030259886142306</td><td>0.35</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1718</td><td>16.01095890410959</td><td>0.0056500548324661</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1738</td><td>4.002739726027397</td><td>0.0114747639104172</td><td>0.64</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1775</td><td>25.019178082191782</td><td>0.0035795527151769</td><td>0.54</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1798</td><td>18.013698630136986</td><td>0.0056950620738378</td><td>0.1</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1838</td><td>19.013698630136982</td><td>0.0053553317168224</td><td>0.23</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1847</td><td>38.02739726027397</td><td>0.001631886133306</td><td>0.17</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1852</td><td>38.02739726027397</td><td>0.0018999851529221</td><td>0.65</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1854</td><td>16.01095890410959</td><td>0.005833908385539</td><td>0.82</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1871</td><td>22.016438356164382</td><td>0.004377229258799</td><td>0.33</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1876</td><td>32.02191780821918</td><td>0.0025782948347576</td><td>0.62</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1878</td><td>30.02191780821918</td><td>0.0030500930528577</td><td>0.16</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1891</td><td>31.02191780821918</td><td>0.0025576386438151</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1898</td><td>28.019178082191782</td><td>0.0029838913286665</td><td>0.55</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1902</td><td>38.02739726027397</td><td>0.0015123756434388</td><td>0.02</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1907</td><td>34.02465753424657</td><td>0.0021253121264598</td><td>0.68</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1940</td><td>16.01095890410959</td><td>0.0061701646549887</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1967</td><td>39.02739726027397</td><td>0.0020646112712023</td><td>0.65</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1972</td><td>7.005479452054795</td><td>0.0095781627890457</td><td>0.47</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT1976</td><td>22.016438356164382</td><td>0.0047801966619705</td><td>0.58</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2141</td><td>23.016438356164382</td><td>0.0043905610941295</td><td>0.51</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2213</td><td>23.016438356164382</td><td>0.0040043900723302</td><td>0.45</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2216</td><td>15.01095890410959</td><td>0.0066574861763503</td><td>0.35</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2237</td><td>10.008219178082191</td><td>0.0087223844551511</td><td>0.84</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2238</td><td>27.019178082191782</td><td>0.0032879261970668</td><td>0.06</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2265</td><td>30.02191780821918</td><td>0.0027049527055341</td><td>0.58</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2291</td><td>10.008219178082191</td><td>0.0080110575751527</td><td>0.82</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2296</td><td>24.016438356164382</td><td>0.0036964571688975</td><td>0.45</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2326</td><td>34.02465753424657</td><td>0.0021253121264598</td><td>0.38</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2381</td><td>14.01095890410959</td><td>0.0070128344442855</td><td>0.48</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2401</td><td>26.019178082191782</td><td>0.0036120872755095</td><td>0.97</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2409</td><td>21.016438356164382</td><td>0.0048717685873807</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2421</td><td>34.02465753424657</td><td>0.001919077692291</td><td>0.77</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2431</td><td>7.005479452054795</td><td>0.0099544126463242</td><td>0.84</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2433</td><td>31.02191780821918</td><td>0.0024413509432181</td><td>0.23</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2451</td><td>34.02465753424657</td><td>0.0026513765251917</td><td>0.69</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2461</td><td>38.02739726027397</td><td>0.0020115129850247</td><td>0.16</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2467</td><td>27.019178082191782</td><td>0.0035655366127201</td><td>0.27</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2485</td><td>26.019178082191782</td><td>0.0031714532061787</td><td>0.67</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2494</td><td>6.005479452054795</td><td>0.010506729271693</td><td>0.74</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2497</td><td>39.02739726027397</td><td>0.0016335859679449</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2498</td><td>17.013698630136986</td><td>0.005749226074277</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2504</td><td>39.02739726027397</td><td>0.0017320725108141</td><td>0.84</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2525</td><td>2.0027397260273974</td><td>0.0129119105195275</td><td>0.03</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2528</td><td>22.016438356164382</td><td>0.0040525989876945</td><td>0.29</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2537</td><td>32.02191780821918</td><td>0.0024183474331928</td><td>0.37</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2607</td><td>28.019178082191782</td><td>0.0029838913286665</td><td>0.21</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2642</td><td>4.002739726027397</td><td>0.0117536827831569</td><td>0.63</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2650</td><td>21.016438356164382</td><td>0.0044321423082501</td><td>0.02</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2655</td><td>5.005479452054795</td><td>0.0112856850509503</td><td>0.56</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2732</td><td>7.005479452054795</td><td>0.009884920908745</td><td>0.6</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2748</td><td>5.005479452054795</td><td>0.0112856850509503</td><td>0.18</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2785</td><td>36.02465753424657</td><td>0.0018310581377426</td><td>0.82</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2799</td><td>2.0027397260273974</td><td>0.0130288028469986</td><td>0.1</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2821</td><td>25.019178082191782</td><td>0.0038585651321968</td><td>0.04</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2835</td><td>39.02739726027397</td><td>0.0014817281649493</td><td>0.86</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2840</td><td>16.01095890410959</td><td>0.0056954677639414</td><td>0.14</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2849</td><td>34.02465753424657</td><td>0.0026513765251917</td><td>0.72</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2871</td><td>28.019178082191782</td><td>0.0027820284459964</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2873</td><td>22.016438356164382</td><td>0.0040082317400281</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2948</td><td>22.016438356164382</td><td>0.0043293080074718</td><td>0.58</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT2954</td><td>2.0027397260273974</td><td>0.0130027356575651</td><td>0.81</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3005</td><td>34.02465753424657</td><td>0.0019520049635588</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3014</td><td>31.02191780821918</td><td>0.0029408041318636</td><td>0.1</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3035</td><td>22.016438356164382</td><td>0.0040525989876945</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3046</td><td>28.019178082191782</td><td>0.0029423796968101</td><td>0.39</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3063</td><td>16.01095890410959</td><td>0.0056954677639414</td><td>0.97</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3083</td><td>14.01095890410959</td><td>0.0064927209031101</td><td>0.39</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3090</td><td>30.02191780821918</td><td>0.0030500930528577</td><td>0.14</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3136</td><td>7.005479452054795</td><td>0.0096454979939675</td><td>0.91</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3142</td><td>37.02739726027397</td><td>0.0018613299840118</td><td>0.51</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3177</td><td>39.02739726027397</td><td>0.0014817281649493</td><td>0.92</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3216</td><td>19.013698630136982</td><td>0.0052544689789903</td><td>0.34</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3247</td><td>18.013698630136986</td><td>0.0053470849932499</td><td>0.17</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3261</td><td>10.008219178082191</td><td>0.0084221393883677</td><td>0.78</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3280</td><td>18.013698630136986</td><td>0.00559339142346</td><td>0.48</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3311</td><td>6.005479452054795</td><td>0.0102265908826314</td><td>0.21</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3320</td><td>10.008219178082191</td><td>0.0085068532154811</td><td>0.87</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3334</td><td>26.019178082191782</td><td>0.0033846071811825</td><td>0.62</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3341</td><td>12.008219178082191</td><td>0.007329031157262</td><td>0.52</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3345</td><td>7.005479452054795</td><td>0.0095781627890457</td><td>0.8</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3354</td><td>30.02191780821918</td><td>0.0031430511033337</td><td>0.95</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3356</td><td>37.02739726027397</td><td>0.002281748334064</td><td>0.63</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3365</td><td>24.016438356164382</td><td>0.0043209776664459</td><td>0.36</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3405</td><td>31.02191780821918</td><td>0.0023667782295962</td><td>0.85</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3445</td><td>33.02465753424657</td><td>0.0025664337896424</td><td>0.7</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3455</td><td>15.01095890410959</td><td>0.0062226300016612</td><td>0.64</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3481</td><td>4.002739726027397</td><td>0.0118244654635078</td><td>0.23</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3491</td><td>36.02465753424657</td><td>0.0018310581377426</td><td>0.96</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3509</td><td>36.02465753424657</td><td>0.0020036202333167</td><td>0.23</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3526</td><td>18.013698630136986</td><td>0.0052045383438984</td><td>0.5</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3568</td><td>24.016438356164382</td><td>0.0039726133555278</td><td>0.06</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3579</td><td>33.02465753424657</td><td>0.0026526044330903</td><td>0.42</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3582</td><td>14.01095890410959</td><td>0.0064023859746226</td><td>0.27</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3585</td><td>10.008219178082191</td><td>0.0082140272428435</td><td>0.47</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3607</td><td>3.0027397260273974</td><td>0.0121721454495093</td><td>0.75</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3608</td><td>28.019178082191782</td><td>0.0034326211536745</td><td>0.42</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3610</td><td>24.016438356164382</td><td>0.0038320484231411</td><td>0.77</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3642</td><td>17.013698630136986</td><td>0.005749226074277</td><td>0.01</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3656</td><td>5.005479452054795</td><td>0.01084269170406</td><td>0.21</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3675</td><td>15.01095890410959</td><td>0.0063167422351491</td><td>0.19</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3676</td><td>25.019178082191782</td><td>0.0034048452699182</td><td>0.95</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3678</td><td>27.019178082191782</td><td>0.0029511068945478</td><td>0.4</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3689</td><td>39.02739726027397</td><td>0.0016657763272356</td><td>0.58</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3699</td><td>18.013698630136986</td><td>0.0052991408414316</td><td>0.17</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3721</td><td>4.002739726027397</td><td>0.0117067298829627</td><td>0.82</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3735</td><td>16.01095890410959</td><td>0.0057873915948686</td><td>0.34</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3736</td><td>11.008219178082191</td><td>0.0083804437488121</td><td>0.64</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3743</td><td>15.01095890410959</td><td>0.0066077055978931</td><td>0.08</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3773</td><td>17.013698630136986</td><td>0.005749226074277</td><td>0.79</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3813</td><td>4.002739726027397</td><td>0.0114747639104172</td><td>0.83</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3828</td><td>18.013698630136986</td><td>0.0055432387874118</td><td>0.97</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3846</td><td>7.005479452054795</td><td>0.0100595673227748</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3849</td><td>34.02465753424657</td><td>0.0021253121264598</td><td>0.69</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3865</td><td>12.008219178082191</td><td>0.0076436260104699</td><td>0.77</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3877</td><td>22.016438356164382</td><td>0.0040974573378703</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3890</td><td>2.0027397260273974</td><td>0.013068001647832</td><td>0.33</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3895</td><td>17.013698630136986</td><td>0.0054631423931399</td><td>0.77</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3910</td><td>10.008219178082191</td><td>0.0085495291296506</td><td>0.38</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3940</td><td>30.02191780821918</td><td>0.0025473168574426</td><td>0.2</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3977</td><td>32.02191780821918</td><td>0.002884077167001</td><td>0.27</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT3989</td><td>26.019178082191782</td><td>0.0036120872755095</td><td>0.07</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4010</td><td>33.02465753424657</td><td>0.0026091633999499</td><td>0.75</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4012</td><td>19.013698630136982</td><td>0.0047327366405495</td><td>0.63</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4020</td><td>22.016438356164382</td><td>0.0040525989876945</td><td>0.16</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4024</td><td>37.02739726027397</td><td>0.0018271869141157</td><td>0.04</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4034</td><td>23.016438356164382</td><td>0.0043403231836401</td><td>0.23</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4056</td><td>5.005479452054795</td><td>0.0107885544380499</td><td>0.94</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4071</td><td>24.016438356164382</td><td>0.0043209776664459</td><td>0.69</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4074</td><td>8.005479452054795</td><td>0.0096991195464869</td><td>0.26</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4095</td><td>2.0027397260273974</td><td>0.012924846593412</td><td>0.92</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4125</td><td>23.016438356164382</td><td>0.0039132758597314</td><td>0.69</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4170</td><td>26.019178082191782</td><td>0.0036120872755095</td><td>0.49</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4182</td><td>29.02191780821918</td><td>0.0032128940342888</td><td>0.11</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4203</td><td>6.005479452054795</td><td>0.010633686075406</td><td>0.84</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4254</td><td>34.02465753424657</td><td>0.0021988694285577</td><td>0.6</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4309</td><td>25.019178082191782</td><td>0.003362517359216</td><td>0.52</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4310</td><td>35.02465753424657</td><td>0.0023929860090674</td><td>0.18</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4317</td><td>33.02465753424657</td><td>0.0024423979386815</td><td>0.96</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4350</td><td>10.008219178082191</td><td>0.0086788457146291</td><td>0.71</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4373</td><td>2.0027397260273974</td><td>0.0128989873929539</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4388</td><td>37.02739726027397</td><td>0.0018271869141157</td><td>0.07</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4430</td><td>32.02191780821918</td><td>0.0028382680287158</td><td>0.85</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4438</td><td>31.02191780821918</td><td>0.0030334633179255</td><td>0.05</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4451</td><td>16.01095890410959</td><td>0.0057412457068026</td><td>0.94</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4484</td><td>28.019178082191782</td><td>0.0029423796968101</td><td>0.45</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4488</td><td>16.01095890410959</td><td>0.0065258021473291</td><td>0.16</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4527</td><td>25.019178082191782</td><td>0.0034048452699182</td><td>0.41</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4571</td><td>30.02191780821918</td><td>0.0024351484401554</td><td>0.56</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4599</td><td>1.0027397260273974</td><td>0.0137792883399427</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4665</td><td>34.02465753424657</td><td>0.0023537096246921</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4684</td><td>7.005479452054795</td><td>0.0096454979939675</td><td>0.91</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4686</td><td>37.02739726027397</td><td>0.001635085974827</td><td>0.41</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4780</td><td>33.02465753424657</td><td>0.0021051134466162</td><td>0.36</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4788</td><td>28.019178082191782</td><td>0.0031119733130909</td><td>0.99</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4845</td><td>17.013698630136986</td><td>0.0062066847319866</td><td>0.73</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4862</td><td>13.01095890410959</td><td>0.0067440811259049</td><td>0.02</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4889</td><td>26.019178082191782</td><td>0.0034289271971795</td><td>0.25</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4897</td><td>3.0027397260273974</td><td>0.0123748384023376</td><td>0.76</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4899</td><td>24.016438356164382</td><td>0.0041183344075756</td><td>0.25</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4912</td><td>17.013698630136986</td><td>0.0056043590796922</td><td>0.88</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4923</td><td>32.02191780821918</td><td>0.0029306256565841</td><td>0.81</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4942</td><td>29.02191780821918</td><td>0.0031666084969437</td><td>0.95</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4958</td><td>22.016438356164382</td><td>0.0041428122265851</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4965</td><td>2.0027397260273974</td><td>0.0129897216269574</td><td>0.31</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT4990</td><td>12.008219178082191</td><td>0.0076896572286509</td><td>0.62</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5013</td><td>37.02739726027397</td><td>0.0022398933736192</td><td>0.56</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5021</td><td>11.008219178082191</td><td>0.0081979525007007</td><td>0.17</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5025</td><td>34.02465753424657</td><td>0.0022365973279791</td><td>0.28</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5050</td><td>2.0027397260273974</td><td>0.0128989873929539</td><td>0.28</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5069</td><td>21.016438356164382</td><td>0.0045262758651039</td><td>0.49</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5070</td><td>27.019178082191782</td><td>0.0037130117218457</td><td>0.9</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5128</td><td>11.008219178082191</td><td>0.0082886959039137</td><td>0.56</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5140</td><td>27.019178082191782</td><td>0.0036140323884954</td><td>0.7</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5177</td><td>26.019178082191782</td><td>0.0034738275652566</td><td>0.08</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5179</td><td>3.0027397260273974</td><td>0.0122454649579341</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5205</td><td>7.005479452054795</td><td>0.0100595673227748</td><td>0.56</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5234</td><td>11.008219178082191</td><td>0.0083804437488121</td><td>0.37</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5245</td><td>34.02465753424657</td><td>0.0022365973279791</td><td>0.26</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5326</td><td>38.02739726027397</td><td>0.0019736279916046</td><td>0.83</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5350</td><td>36.02465753424657</td><td>0.0018643385883214</td><td>0.67</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5365</td><td>23.016438356164382</td><td>0.0039132758597314</td><td>0.28</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5373</td><td>19.013698630136982</td><td>0.0055629027228943</td><td>0.47</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5418</td><td>6.005479452054795</td><td>0.0104125073744786</td><td>0.25</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5440</td><td>15.01095890410959</td><td>0.0065092583431376</td><td>0.98</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5449</td><td>31.02191780821918</td><td>0.0026382250087514</td><td>0.47</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5452</td><td>35.02465753424657</td><td>0.0021169061528847</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5479</td><td>32.02191780821918</td><td>0.002537342579396</td><td>0.97</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5509</td><td>28.019178082191782</td><td>0.0030259886142306</td><td>0.7</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5512</td><td>34.02465753424657</td><td>0.0024351717910058</td><td>0.54</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5536</td><td>38.02739726027397</td><td>0.0021295874247756</td><td>0.53</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5540</td><td>17.013698630136986</td><td>0.0055568858515816</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5545</td><td>33.02465753424657</td><td>0.0025664337896424</td><td>0.89</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5551</td><td>4.002739726027397</td><td>0.0118008240002303</td><td>0.36</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5579</td><td>23.016438356164382</td><td>0.0039585708283417</td><td>0.63</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5593</td><td>23.016438356164382</td><td>0.0044413804930343</td><td>0.88</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5598</td><td>37.02739726027397</td><td>0.0021988061743196</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5609</td><td>3.0027397260273974</td><td>0.0123007442726649</td><td>0.2</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5610</td><td>15.01095890410959</td><td>0.0061761010096659</td><td>0.1</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5625</td><td>27.019178082191782</td><td>0.0036631877677254</td><td>0.46</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5668</td><td>26.019178082191782</td><td>0.0037558497768826</td><td>0.31</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5682</td><td>8.005479452054795</td><td>0.0090248853263601</td><td>0.91</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5691</td><td>36.02465753424657</td><td>0.0021533073790907</td><td>0.42</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5707</td><td>7.005479452054795</td><td>0.0098159142928665</td><td>0.86</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5715</td><td>25.019178082191782</td><td>0.0034911062903745</td><td>0.33</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5726</td><td>24.016438356164382</td><td>0.0042694007130144</td><td>0.25</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5751</td><td>16.01095890410959</td><td>0.005833908385539</td><td>0.45</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5758</td><td>33.02465753424657</td><td>0.0024023994042326</td><td>0.61</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5765</td><td>10.008219178082191</td><td>0.0087223844551511</td><td>0.6</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5800</td><td>26.019178082191782</td><td>0.0037558497768826</td><td>0.71</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5812</td><td>2.0027397260273974</td><td>0.0130549222945401</td><td>0.42</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5813</td><td>5.005479452054795</td><td>0.01084269170406</td><td>0.2</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5815</td><td>27.019178082191782</td><td>0.0029115067463304</td><td>0.0</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5833</td><td>10.008219178082191</td><td>0.0081730260232108</td><td>0.17</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5835</td><td>22.016438356164382</td><td>0.0039643502183541</td><td>0.52</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5836</td><td>8.005479452054795</td><td>0.0095069338788471</td><td>0.82</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5843</td><td>12.008219178082191</td><td>0.0077825529579221</td><td>0.61</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5869</td><td>37.02739726027397</td><td>0.0018961110560811</td><td>0.75</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5901</td><td>21.016438356164382</td><td>0.0043399664594084</td><td>0.82</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5909</td><td>6.005479452054795</td><td>0.0107299093999495</td><td>0.51</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5914</td><td>34.02465753424657</td><td>0.0022749725575131</td><td>0.94</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5919</td><td>6.005479452054795</td><td>0.0103191304372595</td><td>0.89</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5931</td><td>29.02191780821918</td><td>0.0034049012404374</td><td>0.33</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5944</td><td>36.02465753424657</td><td>0.0017347391057988</td><td>0.68</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5945</td><td>24.016438356164382</td><td>0.0035656636066966</td><td>0.18</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5976</td><td>27.019178082191782</td><td>0.0034704885861041</td><td>0.39</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5983</td><td>1.0027397260273974</td><td>0.0137723815516077</td><td>0.19</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5988</td><td>22.016438356164382</td><td>0.0047801966619705</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT5999</td><td>21.016438356164382</td><td>0.004671238098906</td><td>0.25</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6008</td><td>31.02191780821918</td><td>0.002679465420778</td><td>0.28</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6026</td><td>35.02465753424657</td><td>0.001973692879071</td><td>0.35</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6038</td><td>18.013698630136986</td><td>0.0116183028707822</td><td>0.08</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6069</td><td>8.005479452054795</td><td>0.0091705453611916</td><td>0.7</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6085</td><td>14.01095890410959</td><td>0.0066772325056089</td><td>0.57</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6115</td><td>6.005479452054795</td><td>0.0105700170650033</td><td>0.03</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6147</td><td>4.002739726027397</td><td>0.0114977521534079</td><td>0.48</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6162</td><td>25.019178082191782</td><td>0.0038585651321968</td><td>0.97</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6168</td><td>5.005479452054795</td><td>0.0113139655578751</td><td>0.48</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6185</td><td>22.016438356164382</td><td>0.0106687607967906</td><td>0.65</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6208</td><td>38.02739726027397</td><td>0.0020115129850247</td><td>0.81</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6209</td><td>15.01095890410959</td><td>0.0064605861210607</td><td>0.45</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6218</td><td>6.005479452054795</td><td>0.0104752276176217</td><td>0.54</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6223</td><td>31.02191780821918</td><td>0.0030808820470648</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6230</td><td>18.013698630136986</td><td>0.0051116247300554</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6245</td><td>10.008219178082191</td><td>0.0080110575751527</td><td>0.62</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6247</td><td>31.02191780821918</td><td>0.0025576386438151</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6263</td><td>26.019178082191782</td><td>0.0037073041786177</td><td>0.03</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6266</td><td>35.02465753424657</td><td>0.0021923637912253</td><td>0.17</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6316</td><td>29.02191780821918</td><td>0.0031209897574901</td><td>0.57</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6337</td><td>31.02191780821918</td><td>0.0025976193395996</td><td>0.57</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6348</td><td>10.008219178082191</td><td>0.0087661416143418</td><td>0.41</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6361</td><td>23.016438356164382</td><td>0.0038242348217204</td><td>0.55</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6370</td><td>27.019178082191782</td><td>0.0035176915893497</td><td>0.1</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6432</td><td>36.02465753424657</td><td>0.0023990646892956</td><td>0.41</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6449</td><td>8.005479452054795</td><td>0.0092813311184512</td><td>0.79</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6452</td><td>21.016438356164382</td><td>0.0042497076038667</td><td>0.94</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6453</td><td>33.02465753424657</td><td>0.0024423979386815</td><td>0.53</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6456</td><td>1.0027397260273974</td><td>0.0137516819515879</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6461</td><td>32.02191780821918</td><td>0.0023799356967607</td><td>0.61</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6495</td><td>4.002739726027397</td><td>0.0117301828405378</td><td>0.14</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6538</td><td>2.0027397260273974</td><td>0.0131073183832144</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6554</td><td>39.02739726027397</td><td>0.0016335859679449</td><td>0.08</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6619</td><td>22.016438356164382</td><td>0.0040525989876945</td><td>0.65</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6630</td><td>39.02739726027397</td><td>0.0016335859679449</td><td>0.69</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6692</td><td>30.02191780821918</td><td>0.0025858429595557</td><td>0.59</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6699</td><td>29.02191780821918</td><td>0.0029025666200153</td><td>0.78</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6706</td><td>17.013698630136986</td><td>0.0055098147581942</td><td>0.85</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6723</td><td>19.013698630136982</td><td>0.0055629027228943</td><td>0.36</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6746</td><td>1.0027397260273974</td><td>0.0137378995050535</td><td>0.63</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6794</td><td>6.005479452054795</td><td>0.0105383256591911</td><td>0.79</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6796</td><td>21.016438356164382</td><td>0.00477044977276</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6808</td><td>25.019178082191782</td><td>0.0035795527151769</td><td>0.84</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6819</td><td>11.008219178082191</td><td>0.007844805173079</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6871</td><td>11.008219178082191</td><td>0.0078017451180421</td><td>0.96</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6876</td><td>7.005479452054795</td><td>0.00998934150058</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6894</td><td>8.005479452054795</td><td>0.0093934552349389</td><td>0.39</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6921</td><td>19.013698630136982</td><td>0.0051555058978782</td><td>0.89</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6963</td><td>1.0027397260273974</td><td>0.0136966349897672</td><td>0.37</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT6992</td><td>32.02191780821918</td><td>0.0029306256565841</td><td>0.68</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7000</td><td>10.008219178082191</td><td>0.008255234151288</td><td>0.64</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7010</td><td>28.019178082191782</td><td>0.0033377768646961</td><td>0.06</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7016</td><td>29.02191780821918</td><td>0.0026994298726576</td><td>0.75</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7082</td><td>25.019178082191782</td><td>0.0037632246475148</td><td>0.86</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7131</td><td>21.016438356164382</td><td>0.0050277958552807</td><td>0.43</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7140</td><td>11.008219178082191</td><td>0.0078017451180421</td><td>0.64</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7151</td><td>37.02739726027397</td><td>0.0021188789841757</td><td>0.28</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7152</td><td>10.008219178082191</td><td>0.0081730260232108</td><td>0.67</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7169</td><td>25.019178082191782</td><td>0.0032794336159602</td><td>0.94</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7175</td><td>32.02191780821918</td><td>0.0026199080521954</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7199</td><td>14.01095890410959</td><td>0.0072121267503438</td><td>0.48</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7249</td><td>19.013698630136982</td><td>0.0049161760534371</td><td>0.86</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7294</td><td>10.008219178082191</td><td>0.012785103199841</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7314</td><td>30.02191780821918</td><td>0.0026249517377263</td><td>0.07</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7339</td><td>22.016438356164382</td><td>0.004474668958607</td><td>0.36</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7342</td><td>26.019178082191782</td><td>0.0037558497768826</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7384</td><td>26.019178082191782</td><td>0.0031714532061787</td><td>0.76</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7391</td><td>32.02191780821918</td><td>0.002662192899519</td><td>0.97</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7403</td><td>25.019178082191782</td><td>0.0034048452699182</td><td>0.11</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7409</td><td>3.0027397260273974</td><td>0.0124307017435121</td><td>0.23</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7413</td><td>36.02465753424657</td><td>0.0018982239287002</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7441</td><td>23.016438356164382</td><td>0.0042906601080286</td><td>0.61</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7453</td><td>3.0027397260273974</td><td>0.0124307017435121</td><td>0.27</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7454</td><td>6.005479452054795</td><td>0.010633686075406</td><td>0.91</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7507</td><td>23.016438356164382</td><td>0.0037804769596738</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7516</td><td>34.02465753424657</td><td>0.0019520049635588</td><td>0.76</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7527</td><td>37.02739726027397</td><td>0.0016967637905908</td><td>0.91</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7553</td><td>12.008219178082191</td><td>0.0074622401767856</td><td>0.75</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7585</td><td>13.01095890410959</td><td>0.0067440811259049</td><td>0.63</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7595</td><td>7.005479452054795</td><td>0.0099544126463242</td><td>0.46</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7649</td><td>38.02739726027397</td><td>0.0016951375366544</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7687</td><td>11.008219178082191</td><td>0.0083344435791334</td><td>0.47</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7689</td><td>36.02465753424657</td><td>0.0019327251530711</td><td>0.53</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7690</td><td>22.016438356164382</td><td>0.004377229258799</td><td>0.44</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7741</td><td>17.013698630136986</td><td>0.0058478785158174</td><td>0.43</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7746</td><td>4.002739726027397</td><td>0.0114518216293945</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7753</td><td>3.0027397260273974</td><td>0.0124120526656231</td><td>0.1</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7756</td><td>15.01095890410959</td><td>0.0066574861763503</td><td>0.08</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7765</td><td>37.02739726027397</td><td>0.0016656394197393</td><td>0.55</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7776</td><td>28.019178082191782</td><td>0.0033848668322404</td><td>0.37</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7793</td><td>39.02739726027397</td><td>0.0014817281649493</td><td>0.74</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7833</td><td>21.016438356164382</td><td>0.0049752392959916</td><td>0.28</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7853</td><td>13.01095890410959</td><td>0.0068324014081227</td><td>0.33</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7913</td><td>2.0027397260273974</td><td>0.0129507576350129</td><td>0.34</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TBT7914</td><td>3.0027397260273974</td><td>0.0122270937803048</td><td>0.46</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT21</td><td>7.005479452054795</td><td>0.0098159142928665</td><td>0.09</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT30</td><td>3.0027397260273974</td><td>0.0122638637382116</td><td>0.42</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT33</td><td>16.01095890410959</td><td>0.0056050040019509</td><td>0.01</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT68</td><td>11.008219178082191</td><td>0.0079754165566014</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT135</td><td>38.02739726027397</td><td>0.0020501252040074</td><td>0.57</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT236</td><td>32.02191780821918</td><td>0.0028382680287158</td><td>0.82</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT241</td><td>17.013698630136986</td><td>0.0059482237598491</td><td>0.32</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT250</td><td>30.02191780821918</td><td>0.0030962232372771</td><td>0.26</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT265</td><td>39.02739726027397</td><td>0.0015406994210723</td><td>0.22</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT276</td><td>21.016438356164382</td><td>0.0048717685873807</td><td>0.12</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT282</td><td>29.02191780821918</td><td>0.0033558496122671</td><td>0.77</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT290</td><td>34.02465753424657</td><td>0.0024351717910058</td><td>0.24</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT296</td><td>24.016438356164382</td><td>0.0039251946207284</td><td>0.37</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT301</td><td>12.008219178082191</td><td>0.0076896572286509</td><td>0.34</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT305</td><td>24.016438356164382</td><td>0.0037411126163659</td><td>0.87</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT330</td><td>33.02465753424657</td><td>0.002741668344162</td><td>0.59</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT349</td><td>3.0027397260273974</td><td>0.0122638637382116</td><td>0.61</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT354</td><td>21.016438356164382</td><td>0.0048208430124419</td><td>0.15</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT356</td><td>31.02191780821918</td><td>0.0027638903174517</td><td>0.01</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT369</td><td>23.016438356164382</td><td>0.0040043900723302</td><td>0.99</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TMT372</td><td>23.016438356164382</td><td>0.0037372197861518</td><td>0.35</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>TAT1</td><td>36.02465753424657</td><td>0.0017347391057988</td><td>0.58</td><td>0.0699851581230734</td>
+                </tr>
+                </tbody>
+</table>
+<a href="/main_life_assessment.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

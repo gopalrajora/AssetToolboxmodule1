@@ -1,0 +1,1186 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  white-space:nowrap;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<script>
+function sortTable(n, asset_count) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("TableSort");
+  not_sorted = (table.mode == undefined) ? true : false;
+  table.column_sorted = (table.column_sorted == undefined) ? n : table.column_sorted;
+  table.mode = (table.mode == undefined || table.mode == 'desc') ? 'asc' : 'desc';
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = (table.mode == "asc") ? 'desc' : 'asc';
+  switching = true;
+
+  not_sorted = (!not_sorted && table.column_sorted == n) ? false : true;
+
+  // Set the sorting direction to ascending:
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+
+    switching = false;
+    rows = document.getElementById('TB' + asset_count).rows;
+    if (not_sorted) {
+      table.column_sorted = n;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 0; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        condition_1 = isNaN(x.innerText) && isNaN(y.innerText)
+        if (dir == "asc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) > parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) < parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    } else {
+      for (i = 0; i < (rows.length - 1); i++) {
+        rows[i].parentNode.insertBefore(rows[rows.length - 1], rows[i]);
+      }
+
+    }
+  }
+}
+</script>
+<link rel="shortcut icon" href="..\resources\logo_a.png">
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">ASSETS in PATTERN 1</p>
+<table class="center" id="TableSort">
+  
+            <thead>
+                <tr class="style_0" id="TD">
+                  <th>SYNTHETIC G. - TRANSFORMERS</th>
+                  <th onclick=sortTable(1,0)>name</th><th onclick=sortTable(2,0)>age_years</th><th onclick=sortTable(3,0)>H1_fail_prob</th><th onclick=sortTable(4,0)>H2_criticality</th><th onclick=sortTable(5,0)>H3_overload_percent_h_year</th>
+                </tr>
+            </thead>
+            <tbody id="TB0">
+            
+                <tr>
+                    <td></td><td>Trafo_1</td><td>11.027397260273972</td><td>2.8995357e-15</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_2</td><td>1.021917808219178</td><td>0.043159667</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_3</td><td>10.027397260273972</td><td>0.023412516</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_4</td><td>12.027397260273972</td><td>0.024196437</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_6</td><td>21.035616438356165</td><td>2.7769104e-08</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_7</td><td>19.03287671232877</td><td>0.018918768</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_8</td><td>17.03287671232877</td><td>0.02003628</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_9</td><td>14.03013698630137</td><td>0.024049964</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_10</td><td>12.027397260273972</td><td>0.023050368</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_12</td><td>2.021917808219178</td><td>0.040254638</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_13</td><td>14.03013698630137</td><td>0.024049964</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_14</td><td>12.027397260273972</td><td>7.8803083e-13</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_15</td><td>13.03013698630137</td><td>8.513837e-12</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_17</td><td>1.021917808219178</td><td>0.036922306</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_21</td><td>18.03287671232877</td><td>0.0190199</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_22</td><td>18.03287671232877</td><td>0.018244402</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_24</td><td>21.035616438356165</td><td>1.2943972e-05</td><td>0.2</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_25</td><td>3.021917808219178</td><td>0.033877574</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_27</td><td>17.03287671232877</td><td>0.020930575</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_28</td><td>11.027397260273972</td><td>0.02769858</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_34</td><td>11.027397260273972</td><td>7.768503e-18</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_35</td><td>11.027397260273972</td><td>0.025143651</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_37</td><td>17.03287671232877</td><td>2.4418616e-08</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_38</td><td>10.027397260273972</td><td>0.029137565</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_39</td><td>16.03013698630137</td><td>0.020749044</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_40</td><td>15.03013698630137</td><td>0.023101581</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_41</td><td>12.027397260273972</td><td>1.4940078e-16</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_42</td><td>16.03013698630137</td><td>0.022054156</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_43</td><td>19.03287671232877</td><td>0.018079437</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_45</td><td>11.027397260273972</td><td>2.8995357e-15</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_46</td><td>19.03287671232877</td><td>9.1966007e-10</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_48</td><td>14.03013698630137</td><td>2.8355348e-14</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_50</td><td>7.024657534246575</td><td>0.029543493</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_51</td><td>12.027397260273972</td><td>0.022107787</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_52</td><td>17.03287671232877</td><td>0.02042345</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_59</td><td>19.03287671232877</td><td>0.018381925</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_60</td><td>11.027397260273972</td><td>2.8995357e-15</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_62</td><td>4.021917808219178</td><td>0.03232303</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_63</td><td>19.03287671232877</td><td>0.018952407</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_64</td><td>18.03287671232877</td><td>0.020005576</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_65</td><td>10.027397260273972</td><td>0.02741144</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_68</td><td>2.021917808219178</td><td>0.042574584</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_70</td><td>16.03013698630137</td><td>2.6538017e-12</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_71</td><td>14.03013698630137</td><td>0.023206826</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_72</td><td>8.024657534246575</td><td>0.029408274</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_75</td><td>11.027397260273972</td><td>0.024524918</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_76</td><td>18.03287671232877</td><td>1.3510471e-08</td><td>0.0</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_77</td><td>12.027397260273972</td><td>4.357926e-14</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_79</td><td>17.03287671232877</td><td>0.020105392</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_80</td><td>18.03287671232877</td><td>0.019332508</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_81</td><td>15.03013698630137</td><td>2.9584484e-13</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_82</td><td>21.035616438356165</td><td>0.017473469</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_83</td><td>17.03287671232877</td><td>0.020795634</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_84</td><td>3.021917808219178</td><td>0.034507263</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_86</td><td>12.027397260273972</td><td>0.026137752</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_87</td><td>3.021917808219178</td><td>5.522469e-37</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_88</td><td>17.03287671232877</td><td>0.02003628</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_92</td><td>11.027397260273972</td><td>0.02733535</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_94</td><td>19.03287671232877</td><td>7.285329e-08</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_95</td><td>14.03013698630137</td><td>0.022719774</td><td>0.0</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_96</td><td>8.024657534246575</td><td>0.029601421</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_98</td><td>2.021917808219178</td><td>0.032435536</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_99</td><td>18.03287671232877</td><td>0.019693503</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_100</td><td>14.03013698630137</td><td>0.023113033</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_101</td><td>18.03287671232877</td><td>0.019972079</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_104</td><td>13.03013698630137</td><td>0.024402132</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_105</td><td>11.027397260273972</td><td>0.025293747</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_107</td><td>11.027397260273972</td><td>0.02483798</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_111</td><td>5.024657534246575</td><td>1.8339713e-29</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_112</td><td>14.03013698630137</td><td>0.020702202</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_113</td><td>5.024657534246575</td><td>1.8339713e-29</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_114</td><td>18.03287671232877</td><td>0.020068051</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_117</td><td>19.03287671232877</td><td>0.018381925</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_119</td><td>11.027397260273972</td><td>0.023196595</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_120</td><td>19.03287671232877</td><td>0.0192045</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_121</td><td>15.03013698630137</td><td>0.021561304</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_122</td><td>7.024657534246575</td><td>0.028417083</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_123</td><td>11.027397260273972</td><td>0.02483798</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_126</td><td>12.027397260273972</td><td>0.026655646</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_127</td><td>7.024657534246575</td><td>0.030417971</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_128</td><td>11.027397260273972</td><td>0.027579105</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_130</td><td>16.03013698630137</td><td>0.02155156</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_131</td><td>19.03287671232877</td><td>0.01898445</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_133</td><td>16.03013698630137</td><td>0.02083118</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_134</td><td>13.03013698630137</td><td>0.02168701</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_135</td><td>12.027397260273972</td><td>1.4940078e-16</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_137</td><td>2.021917808219178</td><td>6.280000000000001e-43</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_138</td><td>18.03287671232877</td><td>0.019150654</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_139</td><td>15.03013698630137</td><td>0.02327543</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_140</td><td>17.03287671232877</td><td>0.020481715</td><td>0.0</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_143</td><td>13.03013698630137</td><td>0.023521041</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_145</td><td>6.024657534246575</td><td>0.03352804</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_146</td><td>12.027397260273972</td><td>0.025578842</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_148</td><td>15.03013698630137</td><td>4.5825132e-11</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_153</td><td>6.024657534246575</td><td>0.028217979</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_157</td><td>11.027397260273972</td><td>2.8995357e-15</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_159</td><td>11.027397260273972</td><td>0.024204357</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_160</td><td>7.024657534246575</td><td>0.027488787</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_166</td><td>17.03287671232877</td><td>0.021088852</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_169</td><td>13.03013698630137</td><td>0.023402689</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_170</td><td>10.027397260273972</td><td>1.4907919000000002e-16</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_173</td><td>6.024657534246575</td><td>0.026654541</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_174</td><td>17.03287671232877</td><td>0.020105392</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_175</td><td>3.021917808219178</td><td>0.038217805</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_177</td><td>14.03013698630137</td><td>0.023649529</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_180</td><td>12.027397260273972</td><td>1.4940078e-16</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_181</td><td>3.021917808219178</td><td>0.03973007</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_182</td><td>8.024657534246575</td><td>0.026101906</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_183</td><td>19.03287671232877</td><td>0.018079437</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_186</td><td>19.03287671232877</td><td>0.018489351</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_189</td><td>15.03013698630137</td><td>5.931713e-10</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_190</td><td>22.035616438356165</td><td>0.01602467</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_191</td><td>18.03287671232877</td><td>0.018499166</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_192</td><td>12.027397260273972</td><td>7.8803083e-13</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_194</td><td>18.03287671232877</td><td>1.4631224e-10</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_196</td><td>19.03287671232877</td><td>9.1966007e-10</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_198</td><td>14.03013698630137</td><td>0.02240536</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_199</td><td>5.024657534246575</td><td>6.380646e-26</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_201</td><td>16.03013698630137</td><td>0.021613942</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_203</td><td>13.03013698630137</td><td>2.2849074e-15</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_206</td><td>13.03013698630137</td><td>0.02560015</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_208</td><td>12.027397260273972</td><td>0.022269996</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_209</td><td>19.03287671232877</td><td>0.018808026</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_210</td><td>11.027397260273972</td><td>0.02708511</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_211</td><td>18.03287671232877</td><td>0.02009707</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_214</td><td>19.03287671232877</td><td>9.1966007e-10</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_215</td><td>16.03013698630137</td><td>0.021213813</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_216</td><td>18.03287671232877</td><td>1.4631224e-10</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_217</td><td>16.03013698630137</td><td>3.423428e-10</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_218</td><td>12.027397260273972</td><td>0.021943495</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_219</td><td>7.024657534246575</td><td>0.029983664</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_220</td><td>13.03013698630137</td><td>2.2849074e-15</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_221</td><td>13.03013698630137</td><td>0.025260832</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_224</td><td>2.021917808219178</td><td>2.8990595e-38</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_225</td><td>5.024657534246575</td><td>0.028380366</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_227</td><td>13.03013698630137</td><td>0.024989557</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_228</td><td>11.027397260273972</td><td>0.02404123</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_230</td><td>19.03287671232877</td><td>0.019185869</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_231</td><td>1.021917808219178</td><td>0.040235475</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_233</td><td>10.027397260273972</td><td>0.023606684</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_234</td><td>18.03287671232877</td><td>0.019213151</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_236</td><td>19.03287671232877</td><td>0.019071208</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_237</td><td>19.03287671232877</td><td>0.017648634</td><td>0.2</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_238</td><td>12.027397260273972</td><td>7.8803083e-13</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_239</td><td>19.03287671232877</td><td>0.017873615</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_240</td><td>10.027397260273972</td><td>3.5412413e-15</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_241</td><td>17.03287671232877</td><td>0.020363431</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_243</td><td>18.03287671232877</td><td>1.4631224e-10</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_246</td><td>8.024657534246575</td><td>0.0318013</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_248</td><td>11.027397260273972</td><td>0.02558853</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_250</td><td>2.021917808219178</td><td>7.605586999999999e-36</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_251</td><td>19.03287671232877</td><td>6.617793e-07</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_252</td><td>11.027397260273972</td><td>0.024204357</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_255</td><td>1.021917808219178</td><td>0.036922306</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_258</td><td>12.027397260273972</td><td>0.023050368</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_259</td><td>18.03287671232877</td><td>0.019822551</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_260</td><td>13.03013698630137</td><td>0.02363753</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_266</td><td>19.03287671232877</td><td>0.018883506</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_267</td><td>13.03013698630137</td><td>5.309186e-13</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_268</td><td>13.03013698630137</td><td>2.2849074e-15</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_269</td><td>11.027397260273972</td><td>0.02733535</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_271</td><td>13.03013698630137</td><td>2.2849074e-15</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_272</td><td>4.021917808219178</td><td>0.03519093</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_273</td><td>16.03013698630137</td><td>0.022102104</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_274</td><td>17.03287671232877</td><td>0.02042345</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_277</td><td>18.03287671232877</td><td>1.3307417e-07</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_279</td><td>14.03013698630137</td><td>0.020564822</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_282</td><td>10.027397260273972</td><td>0.023989243</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_283</td><td>15.03013698630137</td><td>5.931713e-10</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_284</td><td>7.024657534246575</td><td>0.02864536</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_285</td><td>19.03287671232877</td><td>7.285329e-08</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_287</td><td>18.03287671232877</td><td>0.019150654</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_289</td><td>21.035616438356165</td><td>1.6557051e-06</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_290</td><td>14.03013698630137</td><td>0.023564436</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_291</td><td>17.03287671232877</td><td>0.020887174</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_292</td><td>13.03013698630137</td><td>0.024085177</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_294</td><td>13.03013698630137</td><td>0.024703456</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_296</td><td>2.021917808219178</td><td>2.8990595e-38</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_298</td><td>15.03013698630137</td><td>0.023161069</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_301</td><td>18.03287671232877</td><td>0.019693503</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_303</td><td>4.021917808219178</td><td>6.119627399999999e-29</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_305</td><td>14.03013698630137</td><td>2.8355348e-14</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_306</td><td>10.027397260273972</td><td>0.02844644</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_308</td><td>12.027397260273972</td><td>1.4940078e-16</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_309</td><td>16.03013698630137</td><td>0.021901056</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_311</td><td>14.03013698630137</td><td>5.340644e-12</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_312</td><td>10.027397260273972</td><td>1.4907919000000002e-16</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_313</td><td>10.027397260273972</td><td>0.028303463</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_315</td><td>13.03013698630137</td><td>5.309186e-13</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_316</td><td>5.024657534246575</td><td>4.2729300000000005e-24</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_319</td><td>18.03287671232877</td><td>0.0188813</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_322</td><td>18.03287671232877</td><td>0.019738171</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_323</td><td>16.03013698630137</td><td>4.023242e-09</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_326</td><td>10.027397260273972</td><td>0.026622167</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_327</td><td>7.024657534246575</td><td>9.026954e-20</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_330</td><td>12.027397260273972</td><td>0.023781063</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_331</td><td>14.03013698630137</td><td>7.6651664e-11</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_333</td><td>2.021917808219178</td><td>0.04224485</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_334</td><td>19.03287671232877</td><td>0.01820638</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_338</td><td>19.03287671232877</td><td>9.1966007e-10</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_339</td><td>14.03013698630137</td><td>0.022512054</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_340</td><td>22.035616438356165</td><td>7.058096e-06</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_342</td><td>6.024657534246575</td><td>9.406574e-22</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_343</td><td>6.024657534246575</td><td>0.03420266</td><td>0.2</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_344</td><td>15.03013698630137</td><td>0.021367496</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_345</td><td>10.027397260273972</td><td>0.029002473</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_346</td><td>11.027397260273972</td><td>2.8995357e-15</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_347</td><td>3.021917808219178</td><td>0.032289106</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_349</td><td>11.027397260273972</td><td>0.022666108</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_350</td><td>15.03013698630137</td><td>2.9584484e-13</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_353</td><td>15.03013698630137</td><td>0.022493992</td><td>0.0</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_354</td><td>2.021917808219178</td><td>0.03858058</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_356</td><td>15.03013698630137</td><td>0.021267662</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_357</td><td>19.03287671232877</td><td>0.018767765</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_358</td><td>11.027397260273972</td><td>0.02769858</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_360</td><td>19.03287671232877</td><td>0.018489351</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_361</td><td>15.03013698630137</td><td>0.021267662</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_362</td><td>18.03287671232877</td><td>0.019213151</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_366</td><td>22.035616438356165</td><td>7.058096e-06</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_367</td><td>17.03287671232877</td><td>0.019498458</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_368</td><td>2.021917808219178</td><td>6.280000000000001e-43</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_370</td><td>5.024657534246575</td><td>0.03166179</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_372</td><td>11.027397260273972</td><td>0.028047536</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_374</td><td>10.027397260273972</td><td>3.5412413e-15</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_375</td><td>3.021917808219178</td><td>0.04032947</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_376</td><td>11.027397260273972</td><td>0.028047536</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_378</td><td>12.027397260273972</td><td>0.024331145</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_379</td><td>17.03287671232877</td><td>0.019326724</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_380</td><td>12.027397260273972</td><td>0.025223104</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_381</td><td>11.027397260273972</td><td>2.8995357e-15</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_382</td><td>3.021917808219178</td><td>0.035133712</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_383</td><td>14.03013698630137</td><td>0.021101326</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_384</td><td>17.03287671232877</td><td>0.021012744</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_386</td><td>17.03287671232877</td><td>0.020646194</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_388</td><td>13.03013698630137</td><td>5.309186e-13</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_390</td><td>14.03013698630137</td><td>7.6651664e-11</td><td>0.0</td><td>0.0</td>
+                </tr>
+                </tbody>
+</table>
+<a href="/main_life_assessment.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

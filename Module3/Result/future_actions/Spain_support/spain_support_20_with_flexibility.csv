@@ -1,0 +1,381 @@
+,Support_ID,EI,LA,MS,action
+0,RPUDB12T//74-22-4,0.549,0.498,0.625,Keep the current maintenance
+1,RPUWQIFO//74-22-5-CT,0.034,0.212,0.0,Keep the current maintenance
+2,RPWULH1G//74-22-3,0.209,0.424,0.708,Keep the current maintenance
+3,RQ0W7MUL//74-22-2,0.269,0.498,0.458,Keep the current maintenance
+4,RQ2HC35J//74-27,0.6644,0.0,0.0,Replacement
+5,RQ2NBO45//79,0.3168,0.0,0.0,Replacement
+6,RQ2O32O0//74-26,0.6644,0.0,0.0,Replacement
+7,RQ2O34P5//74-2-1-CT,0.034,0.187,0.0,Keep the current maintenance
+8,RQ2O35AP//81,0.3168,0.0,0.0,Replacement
+9,RQ2RSBDX//74-10-1-CT,0.034,0.187,0.0,Keep the current maintenance
+10,RQ2TB80M//74-3,0.22440000000000002,0.0,0.0,Replacement
+11,RQ2U2NH2//78,0.3168,0.0,0.0,Replacement
+12,RQ2VJJ4Q//74-4,0.3717,0.4634,0.65625,Shorten the maintenance cycle
+13,RQ2WAWCD//74-25,0.6644,0.0,0.0,Replacement
+14,RQ2WB0PA//79-1-CT,0.148,0.374,0.458,Keep the current maintenance
+15,RQ3227SQ//77,0.3168,0.0,0.0,Replacement
+16,RQ351XNN//74-3-1-CT,0.034,0.187,0.0,Keep the current maintenance
+17,RQ351XTF//74,0.3168,0.0,0.0,Replacement
+18,RQ35REIC//74-6,0.3894,0.0,0.458,Replacement
+19,RQ36IS0S//74-24,0.6644,0.0,0.0,Replacement
+20,RQ36IS7R//74-22-1,0.269,0.473,0.458,Keep the current maintenance
+21,RQ36ITU7//74-2,0.22440000000000002,0.0,0.0,Replacement
+22,RQ37A8RE//74-28,0.8294,0.0,0.625,Replacement
+23,RQ38R6MC//74-7,0.22440000000000002,0.0,0.0,Replacement
+24,RQ38R73O//74-1,0.22440000000000002,0.0,0.0,Replacement
+25,RQ38R785//76,0.3168,0.0,0.0,Replacement
+26,RQ3D9RJP//74-23,0.6644,0.0,0.0,Replacement
+27,RQ3E19WA//74-8,0.22440000000000002,0.0,0.0,Replacement
+28,RQ3E1AI0//75,0.34980000000000006,0.0,0.292,Replacement
+29,RQ3HQH2A//74-10,0.3717,0.44589999999999996,0.65625,Shorten the maintenance cycle
+30,RQ3IHW6E//74-9,0.22440000000000002,0.0,0.0,Replacement
+31,RQ3K0TFG//82,0.6468,0.0,0.75,Replacement
+32,RQ3M949X//74-22,0.22440000000000002,0.0,0.0,Replacement
+33,RQ3OHGEU//74-11,0.22440000000000002,0.0,0.0,Replacement
+34,RQ3TPIUD//74-21,0.3894,0.0,0.292,Replacement
+35,RQ3TPJNW//74-12,0.22440000000000002,0.0,0.0,Replacement
+36,RQ4087VA//74-13,0.22440000000000002,0.0,0.458,Replacement
+37,RQ44OTL4//74-20,0.3894,0.0,0.0,Replacement
+38,RQ44OU50//74-14,0.22440000000000002,0.0,0.0,Replacement
+39,RQ4AOEG4//74-15,0.22440000000000002,0.0,0.0,Replacement
+40,RQ4C7A7X//74-19,0.22440000000000002,0.0,0.0,Replacement
+41,RQ4CWPID//74-16,0.22440000000000002,0.0,0.0,Replacement
+42,RQ4CWRDB//83,0.34980000000000006,0.0,0.292,Replacement
+43,RQ4HFDQA//74-17,0.22440000000000002,0.0,0.0,Replacement
+44,RQ4KF5UF//74-18,0.22440000000000002,0.0,0.0,Replacement
+45,RQ4O6CAL//74-29,0.6644,0.0,0.0,Replacement
+46,RQ4RVMH0//84,0.3157,0.0,0.0,Replacement
+47,RQ52UWT5//80-1-CT,0.118,0.35,0.0,Keep the current maintenance
+48,RQ5BU910//73,0.3168,0.0,0.0,Replacement
+49,RQ5HTS99//85,0.3157,0.0,0.0,Replacement
+50,RQ61SCFJ//74-30,0.664,0.686,0.75,Inspect current external aspect
+51,RQ6M1DXH//86,0.3157,0.0,0.0,Replacement
+52,RQ6R9HBI//86-1-CT,0.118,0.349,0.0,Keep the current maintenance
+53,RQ7JG075//87,0.3157,0.0,0.0,Replacement
+54,RQ7SF9TF//72,0.3179,0.0,0.0,Replacement
+55,RQ82N36S//74-31,0.6974,0.0,0.625,Replacement
+56,RQ82N3G8//74-33-5,0.549,0.399,0.625,Keep the current maintenance
+57,RQ8AUX4A//74-33-6-CT,0.464,0.236,0.625,Keep the current maintenance
+58,RQ8EM99R//88,0.3817,0.0,0.417,Replacement
+59,RQ8UCGAG//74-33-4,0.9009,0.0,1.0,Replacement
+60,RQ9PISCN//89,0.3157,0.0,0.0,Replacement
+61,RQ9W9OJR//74-32,0.9944000000000001,0.0,0.75,Replacement
+62,RQA9HCG7//74-33-3,0.9009,0.0,0.625,Replacement
+63,RQAA8TM4//71,0.3179,0.0,0.0,Replacement
+64,RQAKP3CS//90,0.3157,0.0,0.0,Replacement
+65,RQAUFPTH//74-33-2,0.9009,0.0,0.875,Replacement
+66,RQB7NGUI//91,0.3157,0.0,0.0,Replacement
+67,RQBDN1ED//92-CT,0.22330000000000003,0.0,0.0,Replacement
+68,RQBMM8KX//74-33-1,0.579,0.424,0.583,Keep the current maintenance
+69,RQBQDFTA//74-33,0.8624,0.0,0.75,Replacement
+70,RQCQ2FER//70,0.35090000000000005,0.0,0.292,Replacement
+71,RQE5WOGE//74-34,0.6974,0.0,0.625,Replacement
+72,RQFGTBSJ//69,0.3179,0.0,0.0,Replacement
+73,RQFQK18D//74-35,0.6974,0.0,0.625,Replacement
+74,RQHIFFCM//74-36,0.7304,0.0,0.583,Replacement
+75,RQHUEI6N//74-37-CT,0.519,0.474,0.0,Keep the current maintenance
+76,RQI6UR6H//68,0.3179,0.0,0.0,Replacement
+77,RQJ7B5LL//68-1,0.22440000000000002,0.0,0.0,Replacement
+78,RQK7030R//68-2,0.22440000000000002,0.0,0.0,Replacement
+79,RQKTFCF1//67,0.3179,0.0,0.0,Replacement
+80,RQL85UHJ//68-3,0.22440000000000002,0.0,0.0,Replacement
+81,RQMA3527//68-4,0.22440000000000002,0.0,0.0,Replacement
+82,RQMVQX85//66-1-CT,0.119,0.253,0.0,Keep the current maintenance
+83,RQN6Q9V3//66,0.35090000000000005,0.0,0.292,Replacement
+84,RQN6QA89//68-5,0.22440000000000002,0.0,0.0,Replacement
+85,RQQ6IGW0//65,0.35090000000000005,0.0,0.292,Replacement
+86,RQSVBDBP//64,0.35090000000000005,0.0,0.292,Replacement
+87,RQVKLDLX//63,0.3179,0.0,0.0,Replacement
+88,RQX20JL3//59-19-CT,0.12,0.352,0.0,Keep the current maintenance
+89,RQXM7I3A//59-18,0.22440000000000002,0.0,0.0,Replacement
+90,RR09VDW6//62,0.319,0.0,0.0,Replacement
+91,RR0BE8R1//59-17,0.5544,0.0,0.75,Replacement
+92,RR0XTIF1//59-16,0.2574,0.0,0.292,Replacement
+93,RR1K2GVE//59-15,0.2574,0.0,0.292,Replacement
+94,RR24QJAE//59-14,0.5544,0.0,0.458,Replacement
+95,RR2KGTFU//59-13,0.2574,0.0,0.292,Replacement
+96,RR30OABW//61,0.319,0.0,0.0,Replacement
+97,RR356VST//59-12,0.2574,0.0,0.292,Replacement
+98,RR3NV07V//59-11,0.2574,0.0,0.292,Replacement
+99,RR4ATDQC//59-10,0.22440000000000002,0.0,0.0,Replacement
+100,RR4MSGN9//59-9,0.22440000000000002,0.0,0.0,Replacement
+101,RR5H9AOR//59-8,0.22440000000000002,0.0,0.0,Replacement
+102,RR5OPPNV//60,0.319,0.0,0.0,Replacement
+103,RR6FFC1D//59-7,0.22440000000000002,0.0,0.0,Replacement
+104,RR6GW843//59-7-1-CT,0.034,0.188,0.0,Keep the current maintenance
+105,RR7L3RTG//59-6,0.22440000000000002,0.0,0.0,Replacement
+106,RR8NQHGC//59-5,0.22440000000000002,0.0,0.0,Replacement
+107,RR9JO7KN//59-4,0.22440000000000002,0.0,0.0,Replacement
+108,RR9L73WC//59,0.319,0.0,0.0,Replacement
+109,RR9U6EJ3//59-1,0.22440000000000002,0.0,0.0,Replacement
+110,RRAB59FH//59-3-A1,0.12,0.352,0.0,Keep the current maintenance
+111,RRAPCNEN//59-3,0.2574,0.0,0.292,Replacement
+112,RRAVC7SP//59-3-B1,0.12,0.229,0.292,Keep the current maintenance
+113,RRBTI956//59-2,0.2574,0.0,0.0,Replacement
+114,RRDA61MW//58,0.319,0.0,0.0,Replacement
+115,RRH7CSX5//57,0.319,0.0,0.0,Replacement
+116,RRKD4KI7//56,0.319,0.0,0.0,Replacement
+117,RRNHDFXP//55,0.319,0.0,0.0,Replacement
+118,RRQJE09U//54,0.319,0.0,0.0,Replacement
+119,RRRUAJIN//53,0.319,0.0,0.0,Replacement
+120,RRTA6V0M//52,0.3531,0.0,0.292,Replacement
+121,RRULSVBA//51,0.3201,0.0,0.0,Replacement
+122,RRVUH5EV//50,0.48510000000000003,0.0,0.458,Replacement
+123,RRXRKN1Q//49,0.3201,0.0,0.0,Replacement
+124,RS1HX76K//48,0.3201,0.0,0.0,Replacement
+125,RS29E92M//47,0.3201,0.0,0.0,Replacement
+126,RS30TAWM//46,0.3201,0.0,0.0,Replacement
+127,RS40I8FR//45,0.3201,0.0,0.0,Replacement
+128,RS53WD64//44,0.3201,0.0,0.0,Replacement
+129,RT82CO7C//D34-3,0.2266,0.0,0.0,Replacement
+130,RT8L2QFF//D34-2,0.2266,0.0,0.0,Replacement
+131,RT9A9GXW//D34-1,0.2266,0.0,0.0,Replacement
+132,RTIES7OX//D31-1-CT,0.121,0.355,0.0,Keep the current maintenance
+133,RVWXPSPU//D6-1-CT,0.122,0.357,0.0,Keep the current maintenance
+134,SR2JKGWT/80,0.3245,0.0,0.0,Replacement
+135,SR31ARAI//74-5,0.22440000000000002,0.0,0.0,Replacement
+136,S5OHC14B//D8,0.28930000000000006,0.0,0.0,Replacement
+137,S5OKBRG7//D7,0.29590000000000005,0.0,0.0,Replacement
+138,S5ONBJQT//D6,0.30140000000000006,0.0,0.0,Replacement
+139,S5OQBC3W//D5,0.30690000000000006,0.0,0.0,Replacement
+140,S5OSJNC8//D4,0.3124,0.0,0.0,Replacement
+141,S5OVJFN8//D3,0.3179,0.0,0.0,Replacement
+142,S5OWAURA//D2X2,0.152,0.316,0.0,Keep the current maintenance
+143,S5P2246G//D1,0.33,0.0,0.0,Replacement
+144,S5PE16WJ//D2,0.3245,0.0,0.0,Replacement
+145,S5PFI312//D2X1,0.152,0.316,0.0,Keep the current maintenance
+146,S5QI6POO//D9,0.258,0.496,0.0,Keep the current maintenance
+147,S5S3B69E//D10,0.253,0.485,0.0,Keep the current maintenance
+148,S5TGG2EI//D11,0.248,0.475,0.0,Keep the current maintenance
+149,S5VC2NN1//D12,0.26730000000000004,0.0,0.0,Replacement
+150,S5WXFFCR//D13,0.237,0.456,0.0,Keep the current maintenance
+151,S61G0G0W//D14,0.233,0.445,0.0,Keep the current maintenance
+152,S62DF24C//D15,0.227,0.46,0.0,Keep the current maintenance
+153,S62H68M6//D18-5CT,0.2596,0.0,0.0,Replacement
+154,S63NK5H8//D18-4,0.2596,0.0,0.0,Replacement
+155,S644J141//D16,0.222,0.45,0.0,Keep the current maintenance
+156,S651XKPV//D18-3,0.2926,0.0,0.458,Replacement
+157,S66F4H2C//D18-2,0.2596,0.0,0.0,Replacement
+158,S68C80M4//D18-1,0.2596,0.0,0.0,Replacement
+159,S68L7B9D//D18,0.2321,0.0,0.0,Replacement
+160,S68WEX0Q//D18-1-1CT,0.168,0.347,0.0,Keep the current maintenance
+161,S69FM59I//D17,0.217,0.415,0.0,Keep the current maintenance
+162,S6B014RF//D19,0.207,0.396,0.0,Keep the current maintenance
+163,S6DKBCST//D20,0.201,0.386,0.0,Keep the current maintenance
+164,S6GW2MLG//D21,0.196,0.376,0.0,Keep the current maintenance
+165,S6JOCF2T//D22,0.191,0.366,0.0,Keep the current maintenance
+166,S6MND6XT//D23,0.186,0.356,0.0,Keep the current maintenance
+167,S6POMA23//D24,0.181,0.347,0.0,Keep the current maintenance
+168,S6TMKI7P//D25,0.175,0.434,0.0,Keep the current maintenance
+169,S6WGD6QK//D26,0.17,0.326,0.0,Keep the current maintenance
+170,S6X7S4UK//189-15-CT,0.157,0.425,0.0,Keep the current maintenance
+171,S6XPQQ6E//189-14,0.24640000000000004,0.0,0.0,Replacement
+172,S7058P58//189-13,0.24640000000000004,0.0,0.0,Replacement
+173,S70SFJ8S//D27,0.165,0.415,0.0,Keep the current maintenance
+174,S71467HF//189-12,0.41140000000000004,0.0,0.458,Replacement
+175,S71G5AC8//189-11,0.24640000000000004,0.0,0.0,Replacement
+176,S73NP0J2//189-10,0.24640000000000004,0.0,0.0,Replacement
+177,S74SM4JO//D28,0.16,0.306,0.0,Keep the current maintenance
+178,S75OJP8F//189-9,0.24640000000000004,0.0,0.0,Replacement
+179,S77KVV12//D29,0.155,0.297,0.0,Keep the current maintenance
+180,S78157MX//189-8,0.24640000000000004,0.0,0.0,Replacement
+181,S783DILX//189-6-1-CT,0.092,0.298,0.0,Keep the current maintenance
+182,S7AAX8X3//189-7,0.24640000000000004,0.0,0.0,Replacement
+183,S7AKO0K3//189-6,0.24640000000000004,0.0,0.0,Replacement
+184,S7ALFFNX//189-7-1,0.157,0.425,0.0,Keep the current maintenance
+185,S7ATNEM5//D30,0.15,0.287,0.0,Keep the current maintenance
+186,S7BSKRFB//189-5,0.24640000000000004,0.0,0.0,Replacement
+187,S7CKR95N//D59-3-11,0.165,0.44,0.0,Keep the current maintenance
+188,S7CN1LDA//189-4,0.24640000000000004,0.0,0.0,Replacement
+189,S7CT14OH//D59-3-10-1-CT,0.031,0.182,0.0,Keep the current maintenance
+190,S7CWQBXF//D59-3-10,0.165,0.44,0.0,Keep the current maintenance
+191,S7DAPFTG//189-3,0.224,0.454,0.0,Keep the current maintenance
+192,S7DXW5GE//D59-3-9,0.165,0.44,0.0,Keep the current maintenance
+193,S7EULF2I//D31,0.144,0.276,0.0,Keep the current maintenance
+194,S7FUA7XL//D59-3-8,0.165,0.44,0.0,Keep the current maintenance
+195,S7I8CKKC//D59-3-7,0.165,0.465,0.0,Keep the current maintenance
+196,S7K3X81U//D59-3-6,0.165,0.44,0.0,Keep the current maintenance
+197,S7K8FV77//D59,0.0,0.097,0.458,Keep the current maintenance
+198,S7KO6AMP//D32,0.139,0.267,0.0,Keep the current maintenance
+199,S7LWSE9U//D59-3-5-2-CT,0.031,0.182,0.0,Keep the current maintenance
+200,S7M72A6O//D59-3-3,0.165,0.44,0.0,Keep the current maintenance
+201,S7MARHA0//D59-3-5,0.165,0.44,0.0,Keep the current maintenance
+202,S7MBIWHE//D59-3-3-1-CT,0.031,0.182,0.0,Keep the current maintenance
+203,S7ML9NUP//D59-3-5-1,0.099,0.311,0.0,Keep the current maintenance
+204,S7N5XQHB//D59-3-2,0.165,0.44,0.0,Keep the current maintenance
+205,S7NGG35B//D33,0.134,0.256,0.0,Keep the current maintenance
+206,S7NHWU4V//D58,0.005,0.008,0.0,Keep the current maintenance
+207,S7NTVW28//D59-3-4,0.165,0.44,0.0,Keep the current maintenance
+208,S7OJ4NLW//D57,0.01,0.116,0.0,Keep the current maintenance
+209,S7OPTMG9//D59-1,0.233,0.446,0.0,Keep the current maintenance
+210,S7PI254F//D59-3-1,0.165,0.44,0.0,Keep the current maintenance
+211,S7Q6HER3//D59-2,0.25630000000000003,0.0,0.0,Replacement
+212,S7R0WCF7//D34,0.129,0.247,0.0,Keep the current maintenance
+213,S7R36JTR//D59-3,0.25630000000000003,0.0,0.0,Replacement
+214,S7RO508P//D56,0.015,0.027,0.0,Keep the current maintenance
+215,S7S2TH5D//D59-4,0.25630000000000003,0.0,0.0,Replacement
+216,S7T5I6LW//D59-5,0.25630000000000003,0.0,0.0,Replacement
+217,S7TF8XFQ//D55,0.05,0.062,0.75,Keep the current maintenance
+218,S7UGEPQA//D59-5-1,0.165,0.44,0.0,Keep the current maintenance
+219,S7UK5WW1//D59-6,0.25630000000000003,0.0,0.0,Replacement
+220,S7URMHAB//D35,0.124,0.335,0.0,Keep the current maintenance
+221,S7VJ3F5T//D59-7,0.25630000000000003,0.0,0.0,Replacement
+222,S7VJ3FC1//D59-5-2,0.165,0.44,0.0,Keep the current maintenance
+223,S7WF15FQ//D59-5-3,0.165,0.44,0.0,Keep the current maintenance
+224,S7WIQCFE//D59-8,0.25630000000000003,0.0,0.0,Replacement
+225,S7XG6WWF//D59-5-4-CT,0.099,0.311,0.0,Keep the current maintenance
+226,S7XMVW0M//D59-9,0.25630000000000003,0.0,0.0,Replacement
+227,S8005LC0//D54,0.026,0.146,0.0,Keep the current maintenance
+228,S806545G//D59-10,0.25630000000000003,0.0,0.0,Replacement
+229,S8065866//D36,0.118,0.226,0.0,Keep the current maintenance
+230,S814B5B6//D59-11,0.25630000000000003,0.0,0.0,Replacement
+231,S81H1N5Q//D59-12-1-CT,0.099,0.311,0.0,Keep the current maintenance
+232,S81W0I6H//D59-12,0.233,0.471,0.0,Keep the current maintenance
+233,S82CXD65//D59-13,0.25630000000000003,0.0,0.0,Replacement
+234,S83RL7FF//D53,0.031,0.155,0.0,Keep the current maintenance
+235,S841T57R//D37,0.114,0.315,0.0,Keep the current maintenance
+236,S84734ES//D59-14,0.25630000000000003,0.0,0.0,Replacement
+237,S84736GE//D52,0.036,0.068,0.0,Keep the current maintenance
+238,S84J2977//D53-1,0.233,0.472,0.0,Keep the current maintenance
+239,S84NIXJ3//D38,0.108,0.207,0.0,Keep the current maintenance
+240,S84NIXPC//D37-1,0.234,0.474,0.0,Keep the current maintenance
+241,S84S1M0G//D37-1-1,0.167,0.467,0.0,Keep the current maintenance
+242,S84WIA2F//D39,0.103,0.197,0.0,Keep the current maintenance
+243,S8530W8B//D40,0.098,0.286,0.0,Keep the current maintenance
+244,S853QBGQ//D53-2,0.25630000000000003,0.0,0.0,Replacement
+245,S856Q41I//D51,0.041,0.077,0.0,Keep the current maintenance
+246,S859PVF1//D42-2-CT,0.167,0.442,0.0,Keep the current maintenance
+247,S85AHD29//D37-1-3CT,0.167,0.442,0.0,Keep the current maintenance
+248,S85GGRDN//D59-15,0.25630000000000003,0.0,0.0,Replacement
+249,S85IP4H6//D59-16-1CT,0.165,0.342,0.0,Keep the current maintenance
+250,S85JGM0G//D50,0.046,0.087,0.0,Keep the current maintenance
+251,S85UOAUI//D42-1,0.2574,0.0,0.0,Replacement
+252,S860FGKE//D53-3,0.25630000000000003,0.0,0.0,Replacement
+253,S8646LTF//D59-16,0.25630000000000003,0.0,0.0,Replacement
+254,S865NLKC//D41,0.092,0.177,0.0,Keep the current maintenance
+255,S86A6896//D53-4,0.25630000000000003,0.0,0.0,Replacement
+256,S86FECA3//D49,0.052,0.097,0.0,Keep the current maintenance
+257,S86G5S8R//D42,0.088,0.265,0.0,Keep the current maintenance
+258,S86JV1D6//D43,0.082,0.256,0.0,Keep the current maintenance
+259,S86ODNJ7//D44,0.078,0.147,0.0,Keep the current maintenance
+260,S86S4VRT//D37-1-X-1,0.099,0.338,0.0,Keep the current maintenance
+261,S86UD7R5//D45,0.072,0.137,0.0,Keep the current maintenance
+262,S86WLITM//D46,0.067,0.127,0.0,Keep the current maintenance
+263,S872CQ0G//D47,0.062,0.117,0.0,Keep the current maintenance
+264,S873TJ4G//D59-17,0.25630000000000003,0.0,0.0,Replacement
+265,S8763X5V//D48,0.056,0.107,0.0,Keep the current maintenance
+266,S87L2SME//D44-1,0.234,0.449,0.0,Keep the current maintenance
+267,S885QRIM//D59-18,0.25630000000000003,0.0,0.0,Replacement
+268,S88D9C3N//D40-1,0.234,0.474,0.0,Keep the current maintenance
+269,S88WOSRW//D44-2-CT,0.167,0.442,0.0,Keep the current maintenance
+270,S89ANS5P//D59-19,0.25630000000000003,0.0,0.0,Replacement
+271,S89RV4VL//D37-2,0.2574,0.0,0.0,Replacement
+272,S8B6AK5T//D37-3,0.2574,0.0,0.0,Replacement
+273,S8B71UGX//D59-20,0.6963,0.0,0.0,Replacement
+274,S8BMQAWE//D40-2,0.234,0.449,0.0,Keep the current maintenance
+275,S8C3P1J7//D59-21,0.6963,0.0,0.0,Replacement
+276,S8D5METU//D37-4,0.2574,0.0,0.0,Replacement
+277,S8DICRSO//D59-22,0.6963,0.0,0.0,Replacement
+278,S8E32U09//D59-26-1-CT,0.499,0.434,0.0,Keep the current maintenance
+279,S8EPIACX//D40-3,0.234,0.474,0.0,Keep the current maintenance
+280,S8EUQ8WK//D59-26,0.6963,0.0,0.0,Replacement
+281,S8FV6L93//D59-27,0.6963,0.0,0.0,Replacement
+282,S8GBE6DU//D37-5,0.2574,0.0,0.0,Replacement
+283,S8GX3TNL//D59-28,0.6963,0.0,0.0,Replacement
+284,S8HV9UT5//D59-29,0.6963,0.0,0.0,Replacement
+285,S8I411LT//D37-6,0.2574,0.0,0.0,Replacement
+286,S8IUWS47//D59-30,0.6963,0.0,0.0,Replacement
+287,S8IVOEH2//D37-6-1,0.167,0.442,0.0,Keep the current maintenance
+288,S8J1FLEQ//D40-4,0.234,0.449,0.0,Keep the current maintenance
+289,S8JGEGPR//D37-6-2,0.167,0.442,0.0,Keep the current maintenance
+290,S8JQ58J9//D37-7,0.2574,0.0,0.0,Replacement
+291,S8JQUI4S//D59-31,0.6963,0.0,0.0,Replacement
+292,S8K73W3V//D59-31-1-CT,0.499,0.434,0.0,Keep the current maintenance
+293,S8KEKHV7//D37-6-3,0.167,0.442,0.0,Keep the current maintenance
+294,S8KLBHKI//D37-8,0.2574,0.0,0.0,Replacement
+295,S8L1IVBG//D37-6-4-CT,0.099,0.314,0.0,Keep the current maintenance
+296,S8LO01LP//D59-32,0.6963,0.0,0.0,Replacement
+297,S8LPH3OJ//D37-14,0.2574,0.0,0.0,Replacement
+298,S8LW82QD//D37-9,0.6974,0.0,0.0,Replacement
+299,S8MGW5D3//D37-13,0.2574,0.0,0.0,Replacement
+300,S8N1M6RQ//D40-5,0.6974,0.0,0.0,Replacement
+301,S8N5DET0//D37-12,0.6974,0.0,0.0,Replacement
+302,S8N64U42//D37-14-1CT,0.167,0.442,0.0,Keep the current maintenance
+303,S8N8D6UE//D37-10,0.6974,0.0,0.0,Replacement
+304,S8NECJMT//D59-33,0.6963,0.0,0.0,Replacement
+305,S8NFTLTD//D37-15,0.2574,0.0,0.0,Replacement
+306,S8OJ9Q29//D37-11,0.6974,0.0,0.0,Replacement
+307,S8PCWX9A//D59-34,0.6963,0.0,0.0,Replacement
+308,S8Q7DWB0//D40-6,0.6974,0.0,0.0,Replacement
+309,S8QN49G7//D37-16,0.2574,0.0,0.0,Replacement
+310,S8RSQJ24//D59-35,0.6963,0.0,0.0,Replacement
+311,S8SNWS2N//D59-36,0.6963,0.0,0.0,Replacement
+312,S8TKM4BV//D40-7,0.6974,0.0,0.0,Replacement
+313,S8TWL889//D37-17,0.2574,0.0,0.0,Replacement
+314,S8UU1M6K//D59-37,0.6963,0.0,0.0,Replacement
+315,S8W1O3VO//D59-38,0.6963,0.0,0.0,Replacement
+316,S8XKSIKL//D59-39,0.6963,0.0,0.0,Replacement
+317,S91H6L3M//D59-40,0.6963,0.0,0.0,Replacement
+318,S935AS15//D59-41,0.6963,0.0,0.0,Replacement
+319,S9362F3T//D37-18CT,0.2574,0.0,0.0,Replacement
+320,S943H17G//D37-19,0.234,0.449,0.0,Keep the current maintenance
+321,S94UER5Q//D59-42,0.6963,0.0,0.0,Replacement
+322,S95TCFBF//D37-20,0.234,0.449,0.0,Keep the current maintenance
+323,S96NR3FP//D59-43,0.6963,0.0,0.0,Replacement
+324,S98JDOV2//D59-44,0.6963,0.0,0.0,Replacement
+325,S9B6FE4T//D59-45,0.6963,0.0,0.0,Replacement
+326,S9C9TIPU//D59-46,0.6963,0.0,0.0,Replacement
+327,S9EKF18O//D59-47,0.6963,0.0,0.0,Replacement
+328,S9G9AN83//D59-48,0.6963,0.0,0.0,Replacement
+329,S9GNI37M//D59-49,0.6963,0.0,0.0,Replacement
+330,S9H009WP//D59-48-1,0.6214999999999999,0.0,0.0,Replacement
+331,S9HK78CL//D59-48-2,0.6214999999999999,0.0,0.0,Replacement
+332,S9IG4WEF//D59-50,0.6963,0.0,0.0,Replacement
+333,S9JAJQF3//D59-48-3,0.6214999999999999,0.0,0.0,Replacement
+334,S9K78VHR//D59-51,0.6963,0.0,0.0,Replacement
+335,S9L5EWSE//D59-48-4,0.6214999999999999,0.0,0.0,Replacement
+336,S9M5TB4P//D59-52,0.6963,0.0,0.0,Replacement
+337,S9MNRWGQ//D59-48-5,0.6214999999999999,0.0,0.0,Replacement
+338,S9ODF1BO//D59-53,0.6963,0.0,0.0,Replacement
+339,S9OEVVL6//D59-48-6,0.6214999999999999,0.0,0.0,Replacement
+340,S9PP31O3//D59-48-7,0.6214999999999999,0.0,0.0,Replacement
+341,S9QN92WJ//D59-48-8,0.565,0.44,0.0,Keep the current maintenance
+342,S9R185I1//D59-54,0.6963,0.0,0.0,Replacement
+343,S9R5OS3P//D59-48-9,0.6214999999999999,0.0,0.0,Replacement
+344,S9SL4188//D59-55,0.6963,0.0,0.0,Replacement
+345,S9SVK89X//D59-48-10,0.6214999999999999,0.0,0.0,Replacement
+346,S9UVNI1O//D59-48-11,0.6214999999999999,0.0,0.0,Replacement
+347,S9VK4R87//D59-56,0.6963,0.0,0.0,Replacement
+348,S9WS1K4W//D59-57,0.6963,0.0,0.0,Replacement
+349,S9WVQRRJ//D59-48-12,0.6214999999999999,0.0,0.0,Replacement
+350,SA046O6W//D59-58,0.6963,0.0,0.0,Replacement
+351,SA0WLIL2//D59-48-13,0.6214999999999999,0.0,0.0,Replacement
+352,SA20IQMI//D59-59,0.6963,0.0,0.0,Replacement
+353,SA2M8LLM//D59-48-14,0.6214999999999999,0.0,0.0,Replacement
+354,SA3FW02P//D59-60,0.6963,0.0,0.0,Replacement
+355,SA4W2N0P//D59-48-15,0.165,0.342,0.0,Keep the current maintenance
+356,SA5L9D5K//D59-61,0.6963,0.0,0.0,Replacement
+357,SA715OGG//D59-62,0.6963,0.0,0.0,Replacement
+358,SA8L1K81//D59-63,0.6963,0.0,0.0,Replacement
+359,SA9A8AUC//D59-64,0.6963,0.0,0.0,Replacement
+360,SAA3VNQU//D59-63-1-CT,0.499,0.434,0.0,Keep the current maintenance
+361,SAA3VNV0//D59-65,0.6963,0.0,0.0,Replacement
+362,SAAR4EJ8//D59-66,0.6963,0.0,0.0,Replacement
+363,SAF2AALR//D59-67,0.6963,0.0,0.0,Replacement
+364,SAHBCV02//D59-68,0.6963,0.0,0.0,Replacement
+365,SAHF4495//D59-68-1-CT,0.499,0.434,0.0,Keep the current maintenance
+366,SAJTES0E//D59-69,0.6963,0.0,0.0,Replacement
+367,SAM60AF0//D59-70,1.0263000000000002,0.0,0.458,Replacement
+368,SAOEBFMR//D59-71,0.6963,0.0,0.0,Replacement
+369,SAQ6WASR//D59-72,0.6963,0.0,0.0,Replacement
+370,SAS99VNN//D59-73,0.6963,0.0,0.0,Replacement
+371,SATW5JKO//D59-74,0.6963,0.0,0.0,Replacement
+372,SAX2EF03//D59-76-1 CT,0.6214999999999999,0.0,0.0,Replacement
+373,SAXCULNU//D59-76,0.6963,0.0,0.0,Replacement
+374,SB15HGUF//D59-77,0.6963,0.0,0.0,Replacement
+375,SB32L0DN//D59-78,0.6963,0.0,0.0,Replacement
+376,SB4W7LQT//D59-79-1 CT,0.565,0.465,0.0,Keep the current maintenance
+377,SB51WT27//D59-79,0.6963,0.0,0.0,Replacement
+378,SB65CXNO//D59-80 CT,0.6963,0.0,0.0,Replacement
+379,TAWHA09W//D59-75,0.6963,0.0,0.0,Replacement

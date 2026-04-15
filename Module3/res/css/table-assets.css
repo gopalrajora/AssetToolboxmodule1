@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+/*Button code*/
+body {
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table .center {
+  text-align: left;
+  position: relative;
+  width: 50%;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+
+th, td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.div-assets th {
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+thead th {
+  background-color: #000C66;
+}
+
+thead tr.table-header th:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.div-weights tbody td {
+    margin: 0px 0px 0px 0px;
+    padding: 10px 5px 10px 5px;
+}
+
+input.weightInput {
+  border: none;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.4);
+  font-family: Arial_Rounded, sans-serif;
+  background: rgba(255, 255, 255, 0.0);
+  color: #fff;
+  font-size: 16px;
+  width: 80px;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+}
+
+div.grid-container {
+  display: grid;
+  grid-template-rows: 250px auto;
+}
+
+div.div-weights {
+  text-align: center;
+  height: 100%;
+  width: 50%;
+  float: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.div-assets {
+  margin-left: auto;
+  margin-right: auto;
+  float: center;
+}
+
+table.table-weights {
+  float: center;
+  position: center;
+  text-align: center;
+  width: 100%;
+}

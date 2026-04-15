@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "Software\main\visualizer_tool_environment_setup.cmd", 0, True

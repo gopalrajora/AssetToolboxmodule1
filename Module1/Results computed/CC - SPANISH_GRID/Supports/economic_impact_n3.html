@@ -1,0 +1,598 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  white-space:nowrap;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<script>
+function sortTable(n, asset_count) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("TableSort");
+  not_sorted = (table.mode == undefined) ? true : false;
+  table.column_sorted = (table.column_sorted == undefined) ? n : table.column_sorted;
+  table.mode = (table.mode == undefined || table.mode == 'desc') ? 'asc' : 'desc';
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = (table.mode == "asc") ? 'desc' : 'asc';
+  switching = true;
+
+  not_sorted = (!not_sorted && table.column_sorted == n) ? false : true;
+
+  // Set the sorting direction to ascending:
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+
+    switching = false;
+    rows = document.getElementById('TB' + asset_count).rows;
+    if (not_sorted) {
+      table.column_sorted = n;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 0; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        condition_1 = isNaN(x.innerText) && isNaN(y.innerText)
+        if (dir == "asc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) > parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) < parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    } else {
+      for (i = 0; i < (rows.length - 1); i++) {
+        rows[i].parentNode.insertBefore(rows[rows.length - 1], rows[i]);
+      }
+
+    }
+  }
+}
+</script>
+<link rel="shortcut icon" href="..\resources\logo_a.png">
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">ASSETS in PATTERN 3</p>
+<table class="center" id="TableSort">
+  
+            <thead>
+                <tr class="style_0" id="TD">
+                  <th>SPANISH G. - SUPPORTS</th>
+                  <th onclick=sortTable(1,0)>Support_ID</th><th onclick=sortTable(2,0)>H1_KPI_weighted_power</th><th onclick=sortTable(3,0)>H2_birdlife_KPI</th><th onclick=sortTable(4,0)>H3_defecs_severity_KPI</th>
+                </tr>
+            </thead>
+            <tbody id="TB0">
+            
+                <tr>
+                    <td></td><td>RPUWQIFO//74-22-5-CT</td><td>4.33</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RPWULH1G//74-22-3</td><td>5.42</td><td>0</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ0W7MUL//74-22-2</td><td>5.42</td><td>0</td><td>5</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ2O34P5//74-2-1-CT</td><td>4.33</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ2RSBDX//74-10-1-CT</td><td>4.33</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ2WB0PA//79-1-CT</td><td>5.41</td><td>0</td><td>1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ351XNN//74-3-1-CT</td><td>4.33</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ36IS7R//74-22-1</td><td>5.42</td><td>0</td><td>5</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ52UWT5//80-1-CT</td><td>5.41</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ6R9HBI//86-1-CT</td><td>5.41</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQMVQX85//66-1-CT</td><td>5.42</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQX20JL3//59-19-CT</td><td>5.43</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RR6GW843//59-7-1-CT</td><td>4.34</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RRAB59FH//59-3-A1</td><td>5.43</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RRAVC7SP//59-3-B1</td><td>5.43</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RTIES7OX//D31-1-CT</td><td>5.45</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RVWXPSPU//D6-1-CT</td><td>5.46</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S5OWAURA//D2X2</td><td>5.84</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S5PFI312//D2X1</td><td>5.84</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S68WEX0Q//D18-1-1CT</td><td>6.05</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S6WGD6QK//D26</td><td>6.07</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S6X7S4UK//189-15-CT</td><td>5.91</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S70SFJ8S//D27</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S74SM4JO//D28</td><td>5.94</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S77KVV12//D29</td><td>5.88</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S783DILX//189-6-1-CT</td><td>5.07</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7ALFFNX//189-7-1</td><td>5.91</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7ATNEM5//D30</td><td>5.81</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7CKR95N//D59-3-11</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7CT14OH//D59-3-10-1-CT</td><td>4.3</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7CWQBXF//D59-3-10</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7DXW5GE//D59-3-9</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7EULF2I//D31</td><td>5.74</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7FUA7XL//D59-3-8</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7I8CKKC//D59-3-7</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7K3X81U//D59-3-6</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7K8FV77//D59</td><td>3.9</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7KO6AMP//D32</td><td>5.68</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7LWSE9U//D59-3-5-2-CT</td><td>4.3</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7M72A6O//D59-3-3</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7MARHA0//D59-3-5</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7MBIWHE//D59-3-3-1-CT</td><td>4.3</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7ML9NUP//D59-3-5-1</td><td>5.16</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7N5XQHB//D59-3-2</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7NGG35B//D33</td><td>5.61</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7NHWU4V//D58</td><td>3.96</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7NTVW28//D59-3-4</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7OJ4NLW//D57</td><td>4.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7PI254F//D59-3-1</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7R0WCF7//D34</td><td>5.55</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7RO508P//D56</td><td>4.09</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7TF8XFQ//D55</td><td>4.16</td><td>0</td><td>1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7UGEPQA//D59-5-1</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7URMHAB//D35</td><td>5.48</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7VJ3FC1//D59-5-2</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7WF15FQ//D59-5-3</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7XG6WWF//D59-5-4-CT</td><td>5.16</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8005LC0//D54</td><td>4.23</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8065866//D36</td><td>5.41</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S81H1N5Q//D59-12-1-CT</td><td>5.16</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S83RL7FF//D53</td><td>4.29</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S841T57R//D37</td><td>5.35</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S84736GE//D52</td><td>4.36</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S84NIXJ3//D38</td><td>5.28</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S84S1M0G//D37-1-1</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S84WIA2F//D39</td><td>5.22</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8530W8B//D40</td><td>5.15</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S856Q41I//D51</td><td>4.42</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S859PVF1//D42-2-CT</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S85AHD29//D37-1-3CT</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S85IP4H6//D59-16-1CT</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S85JGM0G//D50</td><td>4.49</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S865NLKC//D41</td><td>5.08</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S86FECA3//D49</td><td>4.56</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S86G5S8R//D42</td><td>5.02</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S86JV1D6//D43</td><td>4.95</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S86ODNJ7//D44</td><td>4.89</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S86S4VRT//D37-1-X-1</td><td>5.17</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S86UD7R5//D45</td><td>4.82</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S86WLITM//D46</td><td>4.75</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S872CQ0G//D47</td><td>4.69</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8763X5V//D48</td><td>4.62</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S88WOSRW//D44-2-CT</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8IVOEH2//D37-6-1</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8JGEGPR//D37-6-2</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8KEKHV7//D37-6-3</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8L1IVBG//D37-6-4-CT</td><td>5.17</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S8N64U42//D37-14-1CT</td><td>6.03</td><td>0</td><td>0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>SA4W2N0P//D59-48-15</td><td>6.01</td><td>0</td><td>0</td>
+                </tr>
+                </tbody>
+</table>
+<a href="/main_economic_impact.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

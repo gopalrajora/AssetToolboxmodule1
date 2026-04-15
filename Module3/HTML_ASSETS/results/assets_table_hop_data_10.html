@@ -1,0 +1,541 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+} */
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">Assets</p>
+<table class="center">
+  
+            <thead>
+                <tr class="style_0">
+                 
+                  <th onclick=sortTable(1)>NAME</th><th onclick=sortTable(2)>ECONOMIC IMPACT</th><th onclick=sortTable(3)>LIFE ASSESSMENT</th><th onclick=sortTable(4)>MAINTENANCE STRATGY</th><th onclick=sortTable(5)>TOTAL INDICATOR</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>28CDR2</td><td>0.849</td><td>0.646</td><td>0.711</td><td>0.735</td>
+                </tr>
+                
+                <tr>
+                    <td>28CHHS</td><td>0.456</td><td>0.601</td><td>0.74</td><td>0.599</td>
+                </tr>
+                
+                <tr>
+                    <td>28CQPQ</td><td>0.414</td><td>0.475</td><td>0.43</td><td>0.44</td>
+                </tr>
+                
+                <tr>
+                    <td>28CYL3</td><td>0.364</td><td>0.386</td><td>0.522</td><td>0.424</td>
+                </tr>
+                
+                <tr>
+                    <td>28PCAT</td><td>0.301</td><td>0.8</td><td>0.0</td><td>0.367</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIA7</td><td>0.27</td><td>0.334</td><td>0.406</td><td>0.337</td>
+                </tr>
+                
+                <tr>
+                    <td>28CDR5</td><td>0.139</td><td>0.191</td><td>0.664</td><td>0.332</td>
+                </tr>
+                
+                <tr>
+                    <td>28CHQD</td><td>0.513</td><td>0.351</td><td>0.032</td><td>0.299</td>
+                </tr>
+                
+                <tr>
+                    <td>28CUB0</td><td>0.272</td><td>0.403</td><td>0.089</td><td>0.255</td>
+                </tr>
+                
+                <tr>
+                    <td>28CXN2</td><td>0.225</td><td>0.356</td><td>0.177</td><td>0.253</td>
+                </tr>
+                
+                <tr>
+                    <td>28CNTW</td><td>0.305</td><td>0.193</td><td>0.25</td><td>0.25</td>
+                </tr>
+                
+                <tr>
+                    <td>28CLN4</td><td>0.202</td><td>0.384</td><td>0.084</td><td>0.223</td>
+                </tr>
+                
+                <tr>
+                    <td>28CZP5</td><td>0.219</td><td>0.317</td><td>0.11</td><td>0.215</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIW1</td><td>0.235</td><td>0.345</td><td>0.054</td><td>0.211</td>
+                </tr>
+                
+                <tr>
+                    <td>28APF0</td><td>0.061</td><td>0.209</td><td>0.331</td><td>0.2</td>
+                </tr>
+                
+                <tr>
+                    <td>28CJKK</td><td>0.136</td><td>0.206</td><td>0.25</td><td>0.197</td>
+                </tr>
+                
+                <tr>
+                    <td>28AGM9</td><td>0.425</td><td>0.128</td><td>0.035</td><td>0.196</td>
+                </tr>
+                
+                <tr>
+                    <td>28CFHW</td><td>0.131</td><td>0.16</td><td>0.25</td><td>0.18</td>
+                </tr>
+                
+                <tr>
+                    <td>28APF5</td><td>0.131</td><td>0.179</td><td>0.225</td><td>0.178</td>
+                </tr>
+                
+                <tr>
+                    <td>28CCWV</td><td>0.255</td><td>0.272</td><td>0.0</td><td>0.175</td>
+                </tr>
+                
+                <tr>
+                    <td>28CCKN</td><td>0.181</td><td>0.327</td><td>0.0</td><td>0.169</td>
+                </tr>
+                
+                <tr>
+                    <td>28ARN3</td><td>0.07</td><td>0.155</td><td>0.276</td><td>0.167</td>
+                </tr>
+                
+                <tr>
+                    <td>28CFHY</td><td>0.111</td><td>0.137</td><td>0.25</td><td>0.166</td>
+                </tr>
+                
+                <tr>
+                    <td>28APE9</td><td>0.045</td><td>0.204</td><td>0.236</td><td>0.161</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIB3</td><td>0.166</td><td>0.243</td><td>0.07</td><td>0.16</td>
+                </tr>
+                
+                <tr>
+                    <td>28CFHX</td><td>0.172</td><td>0.198</td><td>0.109</td><td>0.16</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIA6</td><td>0.125</td><td>0.233</td><td>0.056</td><td>0.138</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIA8</td><td>0.134</td><td>0.243</td><td>0.031</td><td>0.136</td>
+                </tr>
+                
+                <tr>
+                    <td>28CBC9</td><td>0.159</td><td>0.213</td><td>0.0</td><td>0.124</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIA9</td><td>0.127</td><td>0.193</td><td>0.047</td><td>0.122</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIB4</td><td>0.152</td><td>0.209</td><td>0.0</td><td>0.12</td>
+                </tr>
+                
+                <tr>
+                    <td>19A650</td><td>0.053</td><td>0.049</td><td>0.25</td><td>0.117</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIB1</td><td>0.138</td><td>0.185</td><td>0.0</td><td>0.108</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIB0</td><td>0.154</td><td>0.17</td><td>0.0</td><td>0.108</td>
+                </tr>
+                
+                <tr>
+                    <td>28CDR3</td><td>0.131</td><td>0.176</td><td>0.0</td><td>0.103</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIB5</td><td>0.078</td><td>0.136</td><td>0.071</td><td>0.095</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIB2</td><td>0.111</td><td>0.167</td><td>0.0</td><td>0.093</td>
+                </tr>
+                
+                <tr>
+                    <td>28APE6</td><td>0.076</td><td>0.122</td><td>0.071</td><td>0.09</td>
+                </tr>
+                
+                <tr>
+                    <td>28CFHZ</td><td>0.097</td><td>0.162</td><td>0.0</td><td>0.086</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIC9</td><td>0.108</td><td>0.143</td><td>0.0</td><td>0.084</td>
+                </tr>
+                
+                <tr>
+                    <td>28CDPG</td><td>0.06</td><td>0.19</td><td>0.0</td><td>0.084</td>
+                </tr>
+                
+                <tr>
+                    <td>28CMFM</td><td>0.084</td><td>0.127</td><td>0.033</td><td>0.081</td>
+                </tr>
+                
+                <tr>
+                    <td>28ANG5</td><td>0.095</td><td>0.098</td><td>0.048</td><td>0.08</td>
+                </tr>
+                
+                <tr>
+                    <td>28PRQP</td><td>0.034</td><td>0.204</td><td>0.0</td><td>0.079</td>
+                </tr>
+                
+                <tr>
+                    <td>28PTQ3</td><td>0.077</td><td>0.123</td><td>0.031</td><td>0.077</td>
+                </tr>
+                
+                <tr>
+                    <td>28PBVP</td><td>0.082</td><td>0.135</td><td>0.0</td><td>0.072</td>
+                </tr>
+                
+                <tr>
+                    <td>28ARM7</td><td>0.104</td><td>0.112</td><td>0.0</td><td>0.072</td>
+                </tr>
+                
+                <tr>
+                    <td>28ANG2</td><td>0.056</td><td>0.082</td><td>0.076</td><td>0.071</td>
+                </tr>
+                
+                <tr>
+                    <td>28ANH0</td><td>0.074</td><td>0.091</td><td>0.0</td><td>0.055</td>
+                </tr>
+                
+                <tr>
+                    <td>28ANG4</td><td>0.008</td><td>0.074</td><td>0.076</td><td>0.053</td>
+                </tr>
+                
+                <tr>
+                    <td>19A716</td><td>0.07</td><td>0.075</td><td>0.0</td><td>0.048</td>
+                </tr>
+                
+                <tr>
+                    <td>19A649</td><td>0.085</td><td>0.057</td><td>0.0</td><td>0.047</td>
+                </tr>
+                
+                <tr>
+                    <td>45PCW7</td><td>0.063</td><td>0.071</td><td>0.0</td><td>0.045</td>
+                </tr>
+                
+                <tr>
+                    <td>28AQG2</td><td>0.065</td><td>0.069</td><td>0.0</td><td>0.045</td>
+                </tr>
+                
+                <tr>
+                    <td>28CVC5</td><td>0.006</td><td>0.061</td><td>0.054</td><td>0.041</td>
+                </tr>
+                
+                <tr>
+                    <td>28PCKK</td><td>0.054</td><td>0.058</td><td>0.0</td><td>0.037</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIC8</td><td>0.047</td><td>0.059</td><td>0.0</td><td>0.035</td>
+                </tr>
+                
+                <tr>
+                    <td>28APF3</td><td>0.003</td><td>0.047</td><td>0.039</td><td>0.029</td>
+                </tr>
+                
+                <tr>
+                    <td>28PYY2</td><td>0.012</td><td>0.069</td><td>0.0</td><td>0.027</td>
+                </tr>
+                
+                <tr>
+                    <td>28PJTZ</td><td>0.011</td><td>0.064</td><td>0.0</td><td>0.025</td>
+                </tr>
+                
+                <tr>
+                    <td>28PPF2</td><td>0.016</td><td>0.052</td><td>0.0</td><td>0.023</td>
+                </tr>
+                
+                <tr>
+                    <td>28ANG8</td><td>0.028</td><td>0.041</td><td>0.0</td><td>0.023</td>
+                </tr>
+                
+                <tr>
+                    <td>28PTA3</td><td>0.007</td><td>0.062</td><td>0.0</td><td>0.023</td>
+                </tr>
+                
+                <tr>
+                    <td>28AIQ3</td><td>0.031</td><td>0.034</td><td>0.0</td><td>0.022</td>
+                </tr>
+                
+                <tr>
+                    <td>28AIQ4</td><td>0.018</td><td>0.035</td><td>0.0</td><td>0.018</td>
+                </tr>
+                
+                <tr>
+                    <td>28PPE4</td><td>0.014</td><td>0.033</td><td>0.0</td><td>0.016</td>
+                </tr>
+                
+                <tr>
+                    <td>19A754</td><td>0.01</td><td>0.033</td><td>0.0</td><td>0.015</td>
+                </tr>
+                
+                <tr>
+                    <td>28AIN3</td><td>0.011</td><td>0.018</td><td>0.0</td><td>0.01</td>
+                </tr>
+                
+                <tr>
+                    <td>19P814</td><td>0.005</td><td>0.015</td><td>0.0</td><td>0.007</td>
+                </tr>
+                
+                <tr>
+                    <td>28PST0</td><td>0.004</td><td>0.015</td><td>0.0</td><td>0.006</td>
+                </tr>
+                
+                <tr>
+                    <td>28PXC6</td><td>0.003</td><td>0.014</td><td>0.0</td><td>0.006</td>
+                </tr>
+                
+                <tr>
+                    <td>45ABP7</td><td>0.005</td><td>0.015</td><td>0.0</td><td>0.006</td>
+                </tr>
+                
+                <tr>
+                    <td>28PNNZ</td><td>0.002</td><td>0.012</td><td>0.0</td><td>0.005</td>
+                </tr>
+                
+                <tr>
+                    <td>45PYY8</td><td>0.0</td><td>0.015</td><td>0.0</td><td>0.005</td>
+                </tr>
+                
+                <tr>
+                    <td>28PBZK</td><td>0.004</td><td>0.01</td><td>0.0</td><td>0.005</td>
+                </tr>
+                
+                <tr>
+                    <td>28PNG9</td><td>0.005</td><td>0.008</td><td>0.0</td><td>0.004</td>
+                </tr>
+                
+                <tr>
+                    <td>28PNG7</td><td>0.003</td><td>0.009</td><td>0.0</td><td>0.004</td>
+                </tr>
+                
+                <tr>
+                    <td>28PVKN</td><td>0.002</td><td>0.008</td><td>0.0</td><td>0.003</td>
+                </tr>
+                
+                <tr>
+                    <td>28PTM7</td><td>0.002</td><td>0.006</td><td>0.0</td><td>0.003</td>
+                </tr>
+                
+                <tr>
+                    <td>28PPF1</td><td>0.002</td><td>0.008</td><td>0.0</td><td>0.003</td>
+                </tr>
+                
+                <tr>
+                    <td>28PLPZ</td><td>0.002</td><td>0.006</td><td>0.0</td><td>0.003</td>
+                </tr>
+                
+                <tr>
+                    <td>28PSJ3</td><td>0.002</td><td>0.006</td><td>0.0</td><td>0.003</td>
+                </tr>
+                
+                <tr>
+                    <td>28PBLK</td><td>0.002</td><td>0.005</td><td>0.0</td><td>0.002</td>
+                </tr>
+                
+                <tr>
+                    <td>28PFQB</td><td>0.001</td><td>0.006</td><td>0.0</td><td>0.002</td>
+                </tr>
+                
+                <tr>
+                    <td>28PPE7</td><td>0.001</td><td>0.004</td><td>0.0</td><td>0.002</td>
+                </tr>
+                
+                <tr>
+                    <td>28PNG6</td><td>0.002</td><td>0.004</td><td>0.0</td><td>0.002</td>
+                </tr>
+                
+                <tr>
+                    <td>28CRQM</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>28CPYN</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>28CPYL</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>28CJF4</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>28CFKY</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>28CIB9</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+                </tr>
+                </tbody>
+</table>
+<a href="./main_total.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

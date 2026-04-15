@@ -1,0 +1,522 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  white-space:nowrap;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<script>
+function sortTable(n, asset_count) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("TableSort");
+  not_sorted = (table.mode == undefined) ? true : false;
+  table.column_sorted = (table.column_sorted == undefined) ? n : table.column_sorted;
+  table.mode = (table.mode == undefined || table.mode == 'desc') ? 'asc' : 'desc';
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = (table.mode == "asc") ? 'desc' : 'asc';
+  switching = true;
+
+  not_sorted = (!not_sorted && table.column_sorted == n) ? false : true;
+
+  // Set the sorting direction to ascending:
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+
+    switching = false;
+    rows = document.getElementById('TB' + asset_count).rows;
+    if (not_sorted) {
+      table.column_sorted = n;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 0; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        condition_1 = isNaN(x.innerText) && isNaN(y.innerText)
+        if (dir == "asc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) > parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) < parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    } else {
+      for (i = 0; i < (rows.length - 1); i++) {
+        rows[i].parentNode.insertBefore(rows[rows.length - 1], rows[i]);
+      }
+
+    }
+  }
+}
+</script>
+<link rel="shortcut icon" href="..\resources\logo_a.png">
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">ASSETS in PATTERN 2</p>
+<table class="center" id="TableSort">
+  
+            <thead>
+                <tr class="style_0" id="TD">
+                  <th>SYNTHETIC G. - TRANSFORMERS</th>
+                  <th onclick=sortTable(1,0)>name</th><th onclick=sortTable(2,0)>age_years</th><th onclick=sortTable(3,0)>H1_fail_prob</th><th onclick=sortTable(4,0)>H2_criticality</th><th onclick=sortTable(5,0)>H3_overload_percent_h_year</th>
+                </tr>
+            </thead>
+            <tbody id="TB0">
+            
+                <tr>
+                    <td></td><td>Trafo_5</td><td>36.04383561643836</td><td>0.009955733</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_16</td><td>23.035616438356165</td><td>0.000192443</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_19</td><td>24.035616438356165</td><td>0.015251643</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_20</td><td>25.03835616438356</td><td>0.014681447</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_26</td><td>39.04657534246575</td><td>0.0090139825</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_30</td><td>37.04657534246575</td><td>0.009704635</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_32</td><td>39.04657534246575</td><td>0.007894294</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_33</td><td>35.04383561643836</td><td>0.009639108</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_44</td><td>30.04109589041096</td><td>0.011892924</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_49</td><td>34.04383561643836</td><td>0.25708336</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_55</td><td>29.04109589041096</td><td>0.012654836</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_61</td><td>39.04657534246575</td><td>0.009048157</td><td>0.3</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_74</td><td>32.04109589041096</td><td>0.044628855</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_78</td><td>23.035616438356165</td><td>6.124133e-07</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_85</td><td>25.03835616438356</td><td>1.04765195e-05</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_89</td><td>23.035616438356165</td><td>0.015855078</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_90</td><td>27.03835616438356</td><td>0.0136008</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_93</td><td>26.03835616438356</td><td>0.014028016</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_97</td><td>24.035616438356165</td><td>0.015178999</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_108</td><td>38.04657534246575</td><td>3.7926014e-07</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_110</td><td>27.03835616438356</td><td>0.0001435181</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_116</td><td>33.04383561643836</td><td>0.117348656</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_118</td><td>23.035616438356165</td><td>0.015645642</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_136</td><td>38.04657534246575</td><td>0.007887691</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_149</td><td>36.04383561643836</td><td>0.008560394</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_151</td><td>25.03835616438356</td><td>0.014689268</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_155</td><td>23.035616438356165</td><td>0.000192443</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_156</td><td>31.04109589041096</td><td>0.011498371</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_162</td><td>34.04383561643836</td><td>0.015361973</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_171</td><td>36.04383561643836</td><td>0.009150988</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_172</td><td>25.03835616438356</td><td>0.014599396</td><td>0.5</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_176</td><td>27.03835616438356</td><td>0.013582378</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_178</td><td>33.04383561643836</td><td>0.010522087</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_184</td><td>36.04383561643836</td><td>0.008763759</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_185</td><td>28.03835616438356</td><td>0.01310582</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_188</td><td>31.04109589041096</td><td>0.23116428</td><td>0.1</td><td>0.0699851581230734</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_193</td><td>22.035616438356165</td><td>0.016693385</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_197</td><td>36.04383561643836</td><td>0.009866894</td><td>0.6</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_202</td><td>39.04657534246575</td><td>0.007580191</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_205</td><td>26.03835616438356</td><td>0.014057022</td><td>0.5</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_212</td><td>35.04383561643836</td><td>0.36800128</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_222</td><td>23.035616438356165</td><td>0.015813515</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_223</td><td>37.04657534246575</td><td>0.0081614</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_226</td><td>34.04383561643836</td><td>0.009793248</td><td>0.6</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_242</td><td>37.04657534246575</td><td>7.845884999999999e-38</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_249</td><td>39.04657534246575</td><td>0.00874589</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_253</td><td>33.04383561643836</td><td>0.0110548595</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_254</td><td>34.04383561643836</td><td>0.015361973</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_256</td><td>37.04657534246575</td><td>7.845884999999999e-38</td><td>0.4</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_261</td><td>37.04657534246575</td><td>0.008520897</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_263</td><td>38.04657534246575</td><td>0.009357341</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_276</td><td>37.04657534246575</td><td>0.009520883</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_278</td><td>24.035616438356165</td><td>0.015195759</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_288</td><td>39.04657534246575</td><td>0.0</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_295</td><td>24.035616438356165</td><td>0.015287243</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_302</td><td>23.035616438356165</td><td>0.015407591</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_304</td><td>24.035616438356165</td><td>2.603969e-06</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_307</td><td>30.04109589041096</td><td>0.012226424</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_310</td><td>39.04657534246575</td><td>0.008573439</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_318</td><td>33.04383561643836</td><td>0.117348656</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_321</td><td>23.035616438356165</td><td>0.015813515</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_324</td><td>32.04109589041096</td><td>0.36436328</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_328</td><td>30.04109589041096</td><td>0.31114504</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_335</td><td>32.04109589041096</td><td>0.011425445</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_336</td><td>37.04657534246575</td><td>0.008669633</td><td>0.1</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_355</td><td>34.04383561643836</td><td>1.3492514e-09</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_363</td><td>31.04109589041096</td><td>0.01172332</td><td>0.3</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_364</td><td>25.03835616438356</td><td>0.014673728</td><td>0.2</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_369</td><td>28.03835616438356</td><td>0.012957886</td><td>0.5</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>Trafo_373</td><td>23.035616438356165</td><td>0.015709046</td><td>0.2</td><td>0.0</td>
+                </tr>
+                </tbody>
+</table>
+<a href="/main_life_assessment.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

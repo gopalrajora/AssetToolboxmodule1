@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Action Suggested</title>
+      <link rel="stylesheet" href="D:\Assest\Tools_5.3\res/css/table-assets.css">
+      <link rel="stylesheet" href="D:\Assest\Tools_5.3\res/css/sort.css">
+      <!--meta http-equiv="refresh" content="1"-->
+  </head>
+  <body>
+    <div class="div-indicators">
+      <p style="text-align: center;">
+        <img class="center" src="D:\Assest\Tools_5.3\res/img/logo_white.png" alt="ATTEST">
+      </p>
+      <p class="title">Assets</p>
+      <div class="grid-container">
+        <div class="div-weights">
+          <table id="weights" class="table-weights">
+            <thead>
+              <tr class="table-weights-header"> 
+                <th> Indicator </th>
+                <th> Weight </th>
+                <th> Mean </th>
+                <th> Std. </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row">
+                <td> Life Assessment </td>
+                <!--td class='weight' contenteditable="true"> 1.0 </td-->
+                <td class="weight">
+                  <input class="weightInput" type="text" onfocus="this.select()" onmouseup="return false;" value="1.0"/>
+                </td>
+                <td class="mean">
+                  0.1400
+                </td>
+                <td class="std">
+                  0.0854
+                </td>
+              </tr>
+              <tr class="table-row">
+                <td> Total_Indicator </td>
+                <!--td class='weight' contenteditable="true"> 1 </td-->
+                <td class="weight">
+                  1
+                </td>
+                <td class="mean">
+                  0.1400
+                </td>
+                <td class="std">
+                  0.0854
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="div-assets">
+          <table id="table-assets" class="center table-sortable">
+            <thead>
+              <tr class="table-header">
+                <th>name</th>
+                <th>Life Assessment</th>
+                <th>Total_Indicator</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row">
+                <td>25.0</td>
+                <td>0.33101045296167253</td>
+                <td>0.33101045296167253</td>
+              </tr>
+              <tr class="table-row">
+                <td>65.0</td>
+                <td>0.210801393728223</td>
+                <td>0.210801393728223</td>
+              </tr>
+              <tr class="table-row">
+                <td>189.0</td>
+                <td>0.1672473867595819</td>
+                <td>0.1672473867595819</td>
+              </tr>
+              <tr class="table-row">
+                <td>178.0</td>
+                <td>0.1202090592334495</td>
+                <td>0.1202090592334495</td>
+              </tr>
+              <tr class="table-row">
+                <td>184.0</td>
+                <td>0.11324041811846691</td>
+                <td>0.11324041811846691</td>
+              </tr>
+              <tr class="table-row">
+                <td>188.0</td>
+                <td>0.08885017421602788</td>
+                <td>0.08885017421602788</td>
+              </tr>
+              <tr class="table-row">
+                <td>24.0</td>
+                <td>0.08710801393728224</td>
+                <td>0.08710801393728224</td>
+              </tr>
+              <tr class="table-row">
+                <td>63.0</td>
+                <td>0.07142857142857144</td>
+                <td>0.07142857142857144</td>
+              </tr>
+              <tr class="table-row">
+                <td>152.0</td>
+                <td>0.0696864111498258</td>
+                <td>0.0696864111498258</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <script src="D:\Assest\Tools_5.3\res/js/tablesort.js"></script>
+  <script src="D:\Assest\Tools_5.3\res/js/update-weights.js"></script>
+  </body>
+</html>

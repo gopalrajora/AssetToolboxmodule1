@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "Software\main\advanced_tool_environment_setup.cmd", 1, True

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Action Suggested</title>
+      <link rel="stylesheet" href="{{ resource_folder }}/css/table-assets.css">
+      <link rel="stylesheet" href="{{ resource_folder }}/css/sort.css">
+      <!--meta http-equiv="refresh" content="1"-->
+  </head>
+  <body>
+    <div class="div-indicators">
+      <p style="text-align: center;">
+        <img class="center" src="{{ resource_folder }}/img/logo_white.png" alt="ATTEST">
+      </p>
+      <p class="title">Assets</p>
+      <div class="grid-container">
+        <div class="div-weights">
+          <table id="weights" class="table-weights">
+            <thead>
+              <tr class="table-weights-header"> 
+                <th> Indicator </th>
+                <th> Weight </th>
+                <th> Mean </th>
+                <th> Std. </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for indicator, weight, mean, std in data_info %}
+              <tr class="table-row">
+                <td> {{ indicator }} </td>
+                <!--td class='weight' contenteditable="true"> {{ weight }} </td-->
+                {% if indicator == data_columns[-1] %}
+                <td class="weight">
+                  {{ weight }}
+                </td>
+                {% else %}
+                <td class="weight">
+                  <input class="weightInput" type="text" onfocus="this.select()" onmouseup="return false;" value="{{ weight }}"/>
+                </td>
+                {% endif %}
+                <td class="mean">
+                  {{ mean }}
+                </td>
+                <td class="std">
+                  {{ std }}
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="div-assets">
+          <table id="table-assets" class="center table-sortable">
+            <thead>
+              <tr class="table-header">
+              {% for header in data.columns %}
+                <th>{{ header }}</th>
+              {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+            {% for row in data.to_numpy() %}
+              <tr class="table-row">
+              {% for value in row %}
+                <td>{{ value }}</td>
+              {% endfor %}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <script src="{{ resource_folder }}/js/tablesort.js"></script>
+  <script src="{{ resource_folder }}/js/update-weights.js"></script>
+  </body>
+</html>

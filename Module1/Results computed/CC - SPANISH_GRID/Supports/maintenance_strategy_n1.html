@@ -1,0 +1,370 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  white-space:nowrap;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<script>
+function sortTable(n, asset_count) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("TableSort");
+  not_sorted = (table.mode == undefined) ? true : false;
+  table.column_sorted = (table.column_sorted == undefined) ? n : table.column_sorted;
+  table.mode = (table.mode == undefined || table.mode == 'desc') ? 'asc' : 'desc';
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = (table.mode == "asc") ? 'desc' : 'asc';
+  switching = true;
+
+  not_sorted = (!not_sorted && table.column_sorted == n) ? false : true;
+
+  // Set the sorting direction to ascending:
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+
+    switching = false;
+    rows = document.getElementById('TB' + asset_count).rows;
+    if (not_sorted) {
+      table.column_sorted = n;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 0; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        condition_1 = isNaN(x.innerText) && isNaN(y.innerText)
+        if (dir == "asc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) > parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) < parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    } else {
+      for (i = 0; i < (rows.length - 1); i++) {
+        rows[i].parentNode.insertBefore(rows[rows.length - 1], rows[i]);
+      }
+
+    }
+  }
+}
+</script>
+<link rel="shortcut icon" href="..\resources\logo_a.png">
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">ASSETS in PATTERN 1</p>
+<table class="center" id="TableSort">
+  
+            <thead>
+                <tr class="style_0" id="TD">
+                  <th>SPANISH G. - SUPPORTS</th>
+                  <th onclick=sortTable(1,0)>Support_ID</th><th onclick=sortTable(2,0)>H2_defects</th><th onclick=sortTable(3,0)>H3_defect_severity</th>
+                </tr>
+            </thead>
+            <tbody id="TB0">
+            
+                <tr>
+                    <td></td><td>RPUDB12T//74-22-4</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RPWULH1G//74-22-3</td><td>3</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ0W7MUL//74-22-2</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ2VJJ4Q//74-4</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ2WB0PA//79-1-CT</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ35REIC//74-6</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ36IS7R//74-22-1</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ37A8RE//74-28</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ3HQH2A//74-10</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ3K0TFG//82</td><td>2</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ4087VA//74-13</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ61SCFJ//74-30</td><td>2</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ82N36S//74-31</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ82N3G8//74-33-5</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ8AUX4A//74-33-6-CT</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ8UCGAG//74-33-4</td><td>4</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQ9W9OJR//74-32</td><td>2</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQA9HCG7//74-33-3</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQAUFPTH//74-33-2</td><td>3</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQBMM8KX//74-33-1</td><td>2</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQBQDFTA//74-33</td><td>2</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQE5WOGE//74-34</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQFQK18D//74-35</td><td>1</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RQHIFFCM//74-36</td><td>2</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RR0BE8R1//59-17</td><td>2</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RR24QJAE//59-14</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>RRVUH5EV//50</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S651XKPV//D18-3</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S71467HF//189-12</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7K8FV77//D59</td><td>1</td><td>2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>S7TF8XFQ//D55</td><td>2</td><td>3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>SAM60AF0//D59-70</td><td>1</td><td>2</td>
+                </tr>
+                </tbody>
+</table>
+<a href="/main_maintenance_strategy.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

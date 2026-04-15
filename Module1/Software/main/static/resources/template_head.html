@@ -1,0 +1,114 @@
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- endbuild -->
+      <style>
+	.label-container{
+	  position:fixed;
+	  bottom:35px;
+	  left:170px;
+	  display:table;
+	  visibility: hidden;
+	}
+
+	.label-text{
+	  color:#FFF;
+	  background:rgba(51,51,51,0.5);
+	  display:table-cell;
+	  vertical-align:middle;
+	  padding:10px;
+	  border-radius:3px;
+	}
+
+	.label-arrow{
+	  display:table-cell;
+	  vertical-align:middle;
+	  color:#333;
+	  opacity:0.5;
+	}
+
+	.float{
+	  position:fixed;
+	  width:60px;
+	  height:60px;
+	  bottom:25px;
+	  left:100px;
+	  background-color:#05B9E3;
+	  color:#FFF;
+	  border-radius:50px;
+	  text-align:center;
+	  
+	}
+
+	.float_close{
+		position: fixed;
+    width: 30px;
+    height: 30px;
+    top: 40px;
+    right: 20px;
+    background-color: #BB2020;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+	}
+
+	.float_restore{
+		position:fixed;
+	  width:60px;
+	  height:60px;
+	  bottom:25px;
+	  left:175px;
+	  border-radius:50px;
+	  text-align:center;
+	}
+
+
+	.float_image{
+	  position:fixed;
+	  width:1000px;
+	  height:100px;
+	  top:10px;
+	  left: 10px;
+	  text-align:left;
+      z-index: -1;
+	}
+
+
+	.my-float{
+	  font-size:24px;
+	  margin-top:18px;
+	}
+
+	a.float + div.label-container {
+	  visibility: hidden;
+	  opacity: 0;
+	  transition: visibility 0s, opacity 0.5s ease;
+	}
+
+	a.float:hover + div.label-container{
+	  visibility: visible;
+	  opacity: 1;
+	}
+
+	.square {
+	  background: green;
+	  height: 80px;
+	  position: absolute;
+	  width: 80px;
+	  border-radius: 15px;
+	  line-height: 60px;
+	}
+
+	@font-face{
+    	font-family: Arial_Rounded;
+    	src: url("{% static 'fonts/ARLRDBD.TTF' %}"),
+    	url('ARLRDBD.eot'); /* IE */
+	}
+
+
+	</style>
+	<link rel="shortcut icon" href="static/resources/logo_a.png">
+    <link href="{% static 'resources/index.css' %}" rel="stylesheet">
+    <!-- build:css mfb.css -->
+    <link href="{% static 'resources/mfb.css' %}" rel="stylesheet">
+    <!-- endbuild -->
+  </head>

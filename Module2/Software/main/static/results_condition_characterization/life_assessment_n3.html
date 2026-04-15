@@ -1,0 +1,394 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  white-space:nowrap;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<script>
+function sortTable(n, asset_count) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("TableSort");
+  not_sorted = (table.mode == undefined) ? true : false;
+  table.column_sorted = (table.column_sorted == undefined) ? n : table.column_sorted;
+  table.mode = (table.mode == undefined || table.mode == 'desc') ? 'asc' : 'desc';
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = (table.mode == "asc") ? 'desc' : 'asc';
+  switching = true;
+
+  not_sorted = (!not_sorted && table.column_sorted == n) ? false : true;
+
+  // Set the sorting direction to ascending:
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+
+    switching = false;
+    rows = document.getElementById('TB' + asset_count).rows;
+    if (not_sorted) {
+      table.column_sorted = n;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 0; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        condition_1 = isNaN(x.innerText) && isNaN(y.innerText)
+        if (dir == "asc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) > parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) < parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    } else {
+      for (i = 0; i < (rows.length - 1); i++) {
+        rows[i].parentNode.insertBefore(rows[rows.length - 1], rows[i]);
+      }
+
+    }
+  }
+}
+</script>
+<link rel="shortcut icon" href="..\resources\logo_a.png">
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">ASSETS in PATTERN 3</p>
+<table class="center" id="TableSort">
+  
+            <thead>
+                <tr class="style_0" id="TD">
+                  <th>Assets</th>
+                  <th onclick=sortTable(1,0)>Segment_ID</th><th onclick=sortTable(2,0)>EI_Indicator</th><th onclick=sortTable(3,0)>LA_Indicator</th><th onclick=sortTable(4,0)>total_indicator</th>
+                </tr>
+            </thead>
+            <tbody id="TB0">
+            
+                <tr>
+                    <td></td><td>CDO7031327</td><td>0.463</td><td>0.689</td><td>0.576</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031329</td><td>0.555</td><td>0.538</td><td>0.546</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031332</td><td>0.529</td><td>0.462</td><td>0.495</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031335</td><td>0.595</td><td>0.555</td><td>0.575</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031336</td><td>0.718</td><td>0.695</td><td>0.706</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031339</td><td>0.904</td><td>0.724</td><td>0.814</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031341</td><td>0.305</td><td>0.689</td><td>0.497</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031349</td><td>0.417</td><td>0.576</td><td>0.496</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031354</td><td>0.512</td><td>0.461</td><td>0.487</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031359</td><td>0.339</td><td>0.712</td><td>0.525</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031361</td><td>0.587</td><td>0.621</td><td>0.604</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031368</td><td>0.377</td><td>0.584</td><td>0.48</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031374</td><td>0.306</td><td>0.798</td><td>0.552</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031375</td><td>0.322</td><td>0.742</td><td>0.532</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031381</td><td>0.387</td><td>0.654</td><td>0.52</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080779</td><td>0.569</td><td>0.553</td><td>0.561</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080791</td><td>0.502</td><td>0.444</td><td>0.473</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080806</td><td>0.569</td><td>0.553</td><td>0.561</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080810</td><td>0.42</td><td>0.544</td><td>0.482</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080816</td><td>0.536</td><td>0.499</td><td>0.517</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080819</td><td>0.569</td><td>0.553</td><td>0.561</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080820</td><td>0.569</td><td>0.553</td><td>0.561</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080822</td><td>0.44</td><td>0.541</td><td>0.491</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080838</td><td>0.45</td><td>0.541</td><td>0.495</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080844</td><td>0.535</td><td>0.457</td><td>0.496</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080867</td><td>0.569</td><td>0.554</td><td>0.562</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080868</td><td>0.651</td><td>0.587</td><td>0.619</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080869</td><td>0.569</td><td>0.559</td><td>0.564</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080871</td><td>0.535</td><td>0.503</td><td>0.519</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080879</td><td>0.502</td><td>0.444</td><td>0.473</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080881</td><td>0.569</td><td>0.553</td><td>0.561</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080889</td><td>0.569</td><td>0.561</td><td>0.565</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080890</td><td>0.569</td><td>0.549</td><td>0.559</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080891</td><td>0.502</td><td>0.448</td><td>0.475</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080901</td><td>0.535</td><td>0.498</td><td>0.517</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080904</td><td>0.535</td><td>0.503</td><td>0.519</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080913</td><td>0.569</td><td>0.542</td><td>0.555</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080914</td><td>0.535</td><td>0.498</td><td>0.517</td>
+                </tr>
+                </tbody>
+</table>
+<a href="/main_life_assessment.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

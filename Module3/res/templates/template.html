@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Action Suggested</title>
+      <link rel="stylesheet" href="{{ root_folder }}/res/css/table.css">
+      <link rel="stylesheet" href="{{ root_folder }}/res/css/sort.css">
+  </head>
+  <body>
+    <p style="text-align: center;">
+      <img class="center" src="{{ root_folder }}/res/img/logo_white.png" alt="ATTEST">
+    </p>
+    <p class="title">Best-decision suggestion</p>
+    <table class="center table-sortable">
+      <thead>
+        <tr class="table-header">
+        {% for header in data.columns %}
+          <th>{{ header }}</th>
+        {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+      {% for row in data.to_numpy() %}
+        <tr class="table-row">
+        {% for value in row %}
+          <td>{{ value }}</td>
+        {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <!--a href="static/home.html" class="float">
+      <img src="img\return_icon.png" alt="icon" width="40px" style="padding-top: 12px;">
+    </a-->
+    <div class="label-container">
+    <div class="label-text">Return</div>
+  <script src="{{ root_folder }}/res/js/tablesort.js"></script>
+  </body>
+</html>

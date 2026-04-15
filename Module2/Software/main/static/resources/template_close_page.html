@@ -1,0 +1,29 @@
+<!-- Display the countdown timer in an element -->
+<p id="demo"></p>
+<link rel="shortcut icon" href="static/resources/logo_a.png">
+<script>
+// Set the date we're counting down to
+
+
+// Update the count down every 1 second
+var seconds = 5
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+
+  // Time calculations for days, hours, minutes and seconds
+  seconds = seconds-1;
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = "You can safely close this tab. The app will disconnect in " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (seconds < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "You can safely close this tab.";
+  }
+}, 1000);
+</script>

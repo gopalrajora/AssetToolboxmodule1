@@ -1,0 +1,626 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  white-space:nowrap;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<script>
+function sortTable(n, asset_count) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("TableSort");
+  not_sorted = (table.mode == undefined) ? true : false;
+  table.column_sorted = (table.column_sorted == undefined) ? n : table.column_sorted;
+  table.mode = (table.mode == undefined || table.mode == 'desc') ? 'asc' : 'desc';
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = (table.mode == "asc") ? 'desc' : 'asc';
+  switching = true;
+
+  not_sorted = (!not_sorted && table.column_sorted == n) ? false : true;
+
+  // Set the sorting direction to ascending:
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+
+    switching = false;
+    rows = document.getElementById('TB' + asset_count).rows;
+    if (not_sorted) {
+      table.column_sorted = n;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 0; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        condition_1 = isNaN(x.innerText) && isNaN(y.innerText)
+        if (dir == "asc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) > parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          condition_2 = (condition_1) ? (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) : parseFloat(x.innerHTML) < parseFloat(y.innerHTML);
+          if (condition_2) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    } else {
+      for (i = 0; i < (rows.length - 1); i++) {
+        rows[i].parentNode.insertBefore(rows[rows.length - 1], rows[i]);
+      }
+
+    }
+  }
+}
+</script>
+<link rel="shortcut icon" href="..\resources\logo_a.png">
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">ASSETS in PATTERN 3</p>
+<table class="center" id="TableSort">
+  
+            <thead>
+                <tr class="style_0" id="TD">
+                  <th>SPANISH G. - T. LINES</th>
+                  <th onclick=sortTable(1,0)>Segment_ID</th><th onclick=sortTable(2,0)>H1_KPI_weighted_power</th><th onclick=sortTable(3,0)>H2_birdlife_KPI</th><th onclick=sortTable(4,0)>H3_KPI_defects_severity</th>
+                </tr>
+            </thead>
+            <tbody id="TB0">
+            
+                <tr>
+                    <td></td><td>CDO7031327</td><td>6.4</td><td>0.0</td><td>2.6</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031328</td><td>6.5</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031330</td><td>6.53</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031331</td><td>7.59</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031334</td><td>7.61</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031341</td><td>7.59</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031343</td><td>4.33</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031344</td><td>6.5</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031345</td><td>5.43</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031346</td><td>4.33</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031348</td><td>6.51</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031349</td><td>5.42</td><td>3.0</td><td>1.4</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031350</td><td>6.51</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031356</td><td>6.51</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031358</td><td>5.45</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031359</td><td>7.61</td><td>0.0</td><td>0.5</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031360</td><td>6.5</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031364</td><td>4.33</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031365</td><td>4.33</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031366</td><td>6.53</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031368</td><td>6.5</td><td>0.0</td><td>1.5</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031372</td><td>7.57</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031373</td><td>5.42</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031374</td><td>7.6</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031375</td><td>7.59</td><td>0.0</td><td>0.3</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031379</td><td>5.41</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031381</td><td>7.58</td><td>0.0</td><td>1.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031384</td><td>6.51</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031388</td><td>5.46</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031389</td><td>5.41</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031391</td><td>4.34</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031396</td><td>5.41</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031397</td><td>7.58</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031398</td><td>6.5</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031402</td><td>6.51</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031403</td><td>7.57</td><td>0.0</td><td>0.2</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031407</td><td>7.57</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031408</td><td>6.5</td><td>0.0</td><td>1.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031410</td><td>7.57</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031416</td><td>7.58</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031418</td><td>6.49</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>CDO7031420</td><td>7.66</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080781</td><td>4.73</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080785</td><td>6.88</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080790</td><td>6.89</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080796</td><td>6.76</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080798</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080803</td><td>6.91</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080804</td><td>6.87</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080807</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080811</td><td>6.89</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080812</td><td>6.03</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080813</td><td>7.66</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080814</td><td>6.72</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080815</td><td>4.3</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080817</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080818</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080821</td><td>6.91</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080823</td><td>6.05</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080827</td><td>6.89</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080828</td><td>6.03</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080829</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080830</td><td>5.07</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080831</td><td>6.87</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080832</td><td>5.73</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080833</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080834</td><td>6.64</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080840</td><td>4.09</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080841</td><td>6.89</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080842</td><td>5.74</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080843</td><td>6.4</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080845</td><td>6.76</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080846</td><td>5.22</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080847</td><td>5.08</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080848</td><td>4.98</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080849</td><td>4.62</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080850</td><td>6.03</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080852</td><td>7.16</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080853</td><td>6.87</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080854</td><td>5.16</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080861</td><td>5.84</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080863</td><td>6.03</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080865</td><td>6.89</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080878</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080884</td><td>6.76</td><td>0.0</td><td>0.5</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080885</td><td>6.87</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080886</td><td>4.3</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080887</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080888</td><td>6.01</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080892</td><td>6.89</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080893</td><td>6.03</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080895</td><td>5.91</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080897</td><td>5.81</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080898</td><td>6.88</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080900</td><td>6.48</td><td>0.0</td><td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td></td><td>NBZ7080905</td><td>6.91</td><td>0.0</td><td>0.0</td>
+                </tr>
+                </tbody>
+</table>
+<a href="/main_economic_impact.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

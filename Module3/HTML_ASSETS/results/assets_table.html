@@ -1,0 +1,1693 @@
+
+<style>
+body {
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(45deg, #0692b2, #001e61);
+  font-family: sans-serif;
+  font-weight: 100;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@font-face{
+    font-family: Arial_Rounded;
+    src: url('../fonts/ARLRDBD.TTF'),
+    url('ARLRDBD.eot'); /* IE */
+}
+
+
+
+/*Button code*/
+
+body{
+  font-family:Arial_Rounded, sans-serif;
+  background-color:#CCC;
+  font-size:16px;
+}
+
+.label-container{
+  position:fixed;
+  bottom:48px;
+  right:105px;
+  display:table;
+  visibility: hidden;
+}
+
+.label-text{
+  color:#FFF;
+  background:rgba(51,51,51,0.5);
+  display:table-cell;
+  vertical-align:middle;
+  padding:10px;
+  border-radius:3px;
+}
+
+.label-arrow{
+  display:table-cell;
+  vertical-align:middle;
+  color:#333;
+  opacity:0.5;
+}
+
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#05B9E3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.my-float{
+  font-size:24px;
+  margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*End button code*/
+
+.title {
+  font-family: Arial_Rounded, sans-serif;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+  text-align: left;
+  position: relative;
+  width: 1000px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); 
+  empty-cells: hide;
+  border-right: 25px solid transparent;
+}
+th, td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+
+    tr.style_0 th {
+      background: #001e61;
+      color: #ffffff;
+    }
+    
+
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* td:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0);
+} */
+
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+</style>
+
+<p style="text-align:center;"><img src="..\resources\logo_white.png" alt="Italian Trulli" class="center"></p>
+<p class="title">Assets</p>
+<table class="center">
+  
+            <thead>
+                <tr class="style_0">
+                 
+                  <th onclick=sortTable(1)>NAME</th><th onclick=sortTable(2)>ECONOMIC IMPACT</th><th onclick=sortTable(3)>LIFE ASSESSMENT</th><th onclick=sortTable(4)>MAINTENANCE STRATGY</th><th onclick=sortTable(5)>TOTAL INDICATOR</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>RQ9W9OJR//74-32</td><td>0.904</td><td>0.908</td><td>0.75</td><td>0.854</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ8UCGAG//74-33-4</td><td>0.819</td><td>0.744</td><td>1.0</td><td>0.854</td>
+                </tr>
+                
+                <tr>
+                    <td>RQAUFPTH//74-33-2</td><td>0.819</td><td>0.744</td><td>0.875</td><td>0.813</td>
+                </tr>
+                
+                <tr>
+                    <td>SAM60AF0//D59-70</td><td>0.933</td><td>0.94</td><td>0.458</td><td>0.777</td>
+                </tr>
+                
+                <tr>
+                    <td>RQBQDFTA//74-33</td><td>0.784</td><td>0.785</td><td>0.75</td><td>0.773</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3K0TFG//82</td><td>0.588</td><td>0.947</td><td>0.75</td><td>0.762</td>
+                </tr>
+                
+                <tr>
+                    <td>RQA9HCG7//74-33-3</td><td>0.819</td><td>0.744</td><td>0.625</td><td>0.729</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ37A8RE//74-28</td><td>0.754</td><td>0.76</td><td>0.625</td><td>0.713</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ61SCFJ//74-30</td><td>0.664</td><td>0.686</td><td>0.75</td><td>0.7</td>
+                </tr>
+                
+                <tr>
+                    <td>RR0BE8R1//59-17</td><td>0.504</td><td>0.787</td><td>0.75</td><td>0.68</td>
+                </tr>
+                
+                <tr>
+                    <td>RQFQK18D//74-35</td><td>0.634</td><td>0.686</td><td>0.625</td><td>0.648</td>
+                </tr>
+                
+                <tr>
+                    <td>RQE5WOGE//74-34</td><td>0.634</td><td>0.686</td><td>0.625</td><td>0.648</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ82N36S//74-31</td><td>0.634</td><td>0.686</td><td>0.625</td><td>0.648</td>
+                </tr>
+                
+                <tr>
+                    <td>RQHIFFCM//74-36</td><td>0.664</td><td>0.686</td><td>0.583</td><td>0.644</td>
+                </tr>
+                
+                <tr>
+                    <td>RR24QJAE//59-14</td><td>0.504</td><td>0.787</td><td>0.458</td><td>0.583</td>
+                </tr>
+                
+                <tr>
+                    <td>RRVUH5EV//50</td><td>0.441</td><td>0.804</td><td>0.458</td><td>0.568</td>
+                </tr>
+                
+                <tr>
+                    <td>RPUDB12T//74-22-4</td><td>0.549</td><td>0.498</td><td>0.625</td><td>0.557</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2VJJ4Q//74-4</td><td>0.354</td><td>0.662</td><td>0.625</td><td>0.547</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3HQH2A//74-10</td><td>0.354</td><td>0.637</td><td>0.625</td><td>0.539</td>
+                </tr>
+                
+                <tr>
+                    <td>RQBMM8KX//74-33-1</td><td>0.579</td><td>0.424</td><td>0.583</td><td>0.529</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ82N3G8//74-33-5</td><td>0.549</td><td>0.399</td><td>0.625</td><td>0.524</td>
+                </tr>
+                
+                <tr>
+                    <td>S71467HF//189-12</td><td>0.374</td><td>0.676</td><td>0.458</td><td>0.503</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ8EM99R//88</td><td>0.347</td><td>0.725</td><td>0.417</td><td>0.496</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ35REIC//74-6</td><td>0.354</td><td>0.662</td><td>0.458</td><td>0.491</td>
+                </tr>
+                
+                <tr>
+                    <td>S8N8D6UE//D37-10</td><td>0.634</td><td>0.72</td><td>0.0</td><td>0.451</td>
+                </tr>
+                
+                <tr>
+                    <td>S8LW82QD//D37-9</td><td>0.634</td><td>0.72</td><td>0.0</td><td>0.451</td>
+                </tr>
+                
+                <tr>
+                    <td>S8PCWX9A//D59-34</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S935AS15//D59-41</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8W1O3VO//D59-38</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8UU1M6K//D59-37</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8SNWS2N//D59-36</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>SAQ6WASR//D59-72</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8LO01LP//D59-32</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>SAS99VNN//D59-73</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S96NR3FP//D59-43</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>SB15HGUF//D59-77</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>SB32L0DN//D59-78</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8IUWS47//D59-30</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8HV9UT5//D59-29</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8GX3TNL//D59-28</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8FV6L93//D59-27</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8C3P1J7//D59-21</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S8B71UGX//D59-20</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S94UER5Q//D59-42</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S98JDOV2//D59-44</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S9K78VHR//D59-51</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S9C9TIPU//D59-46</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S9ODF1BO//D59-53</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>SA20IQMI//D59-59</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S9VK4R87//D59-56</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>S9IG4WEF//D59-50</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>SA5L9D5K//D59-61</td><td>0.633</td><td>0.717</td><td>0.0</td><td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>RPWULH1G//74-22-3</td><td>0.209</td><td>0.424</td><td>0.708</td><td>0.447</td>
+                </tr>
+                
+                <tr>
+                    <td>RRTA6V0M//52</td><td>0.321</td><td>0.729</td><td>0.292</td><td>0.447</td>
+                </tr>
+                
+                <tr>
+                    <td>RQQ6IGW0//65</td><td>0.319</td><td>0.727</td><td>0.292</td><td>0.446</td>
+                </tr>
+                
+                <tr>
+                    <td>RQSVBDBP//64</td><td>0.319</td><td>0.728</td><td>0.292</td><td>0.446</td>
+                </tr>
+                
+                <tr>
+                    <td>RQCQ2FER//70</td><td>0.319</td><td>0.727</td><td>0.292</td><td>0.446</td>
+                </tr>
+                
+                <tr>
+                    <td>S8OJ9Q29//D37-11</td><td>0.634</td><td>0.696</td><td>0.0</td><td>0.443</td>
+                </tr>
+                
+                <tr>
+                    <td>S8N5DET0//D37-12</td><td>0.634</td><td>0.696</td><td>0.0</td><td>0.443</td>
+                </tr>
+                
+                <tr>
+                    <td>SB65CXNO//D59-80 CT</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SB51WT27//D59-79</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SAJTES0E//D59-69</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S8EUQ8WK//D59-26</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SA715OGG//D59-62</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SAF2AALR//D59-67</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SA8L1K81//D59-63</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SA9A8AUC//D59-64</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SAA3VNV0//D59-65</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SA046O6W//D59-58</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S8JQUI4S//D59-31</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S9WS1K4W//D59-57</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ8AUX4A//74-33-6-CT</td><td>0.464</td><td>0.236</td><td>0.625</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S8XKSIKL//D59-39</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S9EKF18O//D59-47</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S9G9AN83//D59-48</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S9GNI37M//D59-49</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SAOEBFMR//D59-71</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S9M5TB4P//D59-52</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S9R185I1//D59-54</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S9SL4188//D59-55</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SATW5JKO//D59-74</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SAHBCV02//D59-68</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>SAAR4EJ8//D59-66</td><td>0.633</td><td>0.693</td><td>0.0</td><td>0.442</td>
+                </tr>
+                
+                <tr>
+                    <td>S651XKPV//D18-3</td><td>0.266</td><td>0.6</td><td>0.458</td><td>0.441</td>
+                </tr>
+                
+                <tr>
+                    <td>RQN6Q9V3//66</td><td>0.319</td><td>0.702</td><td>0.292</td><td>0.438</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3E1AI0//75</td><td>0.318</td><td>0.702</td><td>0.292</td><td>0.437</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4CWRDB//83</td><td>0.318</td><td>0.701</td><td>0.292</td><td>0.437</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3TPIUD//74-21</td><td>0.354</td><td>0.662</td><td>0.292</td><td>0.436</td>
+                </tr>
+                
+                <tr>
+                    <td>SAXCULNU//D59-76</td><td>0.633</td><td>0.668</td><td>0.0</td><td>0.434</td>
+                </tr>
+                
+                <tr>
+                    <td>TAWHA09W//D59-75</td><td>0.633</td><td>0.668</td><td>0.0</td><td>0.434</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2O32O0//74-26</td><td>0.604</td><td>0.662</td><td>0.0</td><td>0.422</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3D9RJP//74-23</td><td>0.604</td><td>0.662</td><td>0.0</td><td>0.422</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ36IS0S//74-24</td><td>0.604</td><td>0.662</td><td>0.0</td><td>0.422</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2WAWCD//74-25</td><td>0.604</td><td>0.662</td><td>0.0</td><td>0.422</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2HC35J//74-27</td><td>0.604</td><td>0.637</td><td>0.0</td><td>0.413</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4O6CAL//74-29</td><td>0.604</td><td>0.637</td><td>0.0</td><td>0.413</td>
+                </tr>
+                
+                <tr>
+                    <td>S8N1M6RQ//D40-5</td><td>0.634</td><td>0.597</td><td>0.0</td><td>0.41</td>
+                </tr>
+                
+                <tr>
+                    <td>S8Q7DWB0//D40-6</td><td>0.634</td><td>0.597</td><td>0.0</td><td>0.41</td>
+                </tr>
+                
+                <tr>
+                    <td>S91H6L3M//D59-40</td><td>0.633</td><td>0.594</td><td>0.0</td><td>0.409</td>
+                </tr>
+                
+                <tr>
+                    <td>S8RSQJ24//D59-35</td><td>0.633</td><td>0.594</td><td>0.0</td><td>0.409</td>
+                </tr>
+                
+                <tr>
+                    <td>S9B6FE4T//D59-45</td><td>0.633</td><td>0.594</td><td>0.0</td><td>0.409</td>
+                </tr>
+                
+                <tr>
+                    <td>S8DICRSO//D59-22</td><td>0.633</td><td>0.594</td><td>0.0</td><td>0.409</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ0W7MUL//74-22-2</td><td>0.269</td><td>0.498</td><td>0.458</td><td>0.409</td>
+                </tr>
+                
+                <tr>
+                    <td>SA3FW02P//D59-60</td><td>0.633</td><td>0.594</td><td>0.0</td><td>0.409</td>
+                </tr>
+                
+                <tr>
+                    <td>S8NECJMT//D59-33</td><td>0.633</td><td>0.594</td><td>0.0</td><td>0.409</td>
+                </tr>
+                
+                <tr>
+                    <td>S8TKM4BV//D40-7</td><td>0.634</td><td>0.572</td><td>0.0</td><td>0.402</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ36IS7R//74-22-1</td><td>0.269</td><td>0.473</td><td>0.458</td><td>0.4</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4087VA//74-13</td><td>0.204</td><td>0.539</td><td>0.458</td><td>0.4</td>
+                </tr>
+                
+                <tr>
+                    <td>S9OEVVL6//D59-48-6</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9HK78CL//D59-48-2</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>SA0WLIL2//D59-48-13</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9UVNI1O//D59-48-11</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9MNRWGQ//D59-48-5</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9SVK89X//D59-48-10</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9R5OS3P//D59-48-9</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9WVQRRJ//D59-48-12</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9JAJQF3//D59-48-3</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9L5EWSE//D59-48-4</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9PP31O3//D59-48-7</td><td>0.565</td><td>0.588</td><td>0.0</td><td>0.384</td>
+                </tr>
+                
+                <tr>
+                    <td>S9H009WP//D59-48-1</td><td>0.565</td><td>0.564</td><td>0.0</td><td>0.376</td>
+                </tr>
+                
+                <tr>
+                    <td>SA2M8LLM//D59-48-14</td><td>0.565</td><td>0.564</td><td>0.0</td><td>0.376</td>
+                </tr>
+                
+                <tr>
+                    <td>SAX2EF03//D59-76-1 CT</td><td>0.565</td><td>0.564</td><td>0.0</td><td>0.376</td>
+                </tr>
+                
+                <tr>
+                    <td>RR0XTIF1//59-16</td><td>0.234</td><td>0.565</td><td>0.292</td><td>0.364</td>
+                </tr>
+                
+                <tr>
+                    <td>RR3NV07V//59-11</td><td>0.234</td><td>0.565</td><td>0.292</td><td>0.364</td>
+                </tr>
+                
+                <tr>
+                    <td>RR356VST//59-12</td><td>0.234</td><td>0.565</td><td>0.292</td><td>0.364</td>
+                </tr>
+                
+                <tr>
+                    <td>RR2KGTFU//59-13</td><td>0.234</td><td>0.565</td><td>0.292</td><td>0.364</td>
+                </tr>
+                
+                <tr>
+                    <td>RR1K2GVE//59-15</td><td>0.234</td><td>0.565</td><td>0.292</td><td>0.364</td>
+                </tr>
+                
+                <tr>
+                    <td>RRAPCNEN//59-3</td><td>0.234</td><td>0.54</td><td>0.292</td><td>0.355</td>
+                </tr>
+                
+                <tr>
+                    <td>SB4W7LQT//D59-79-1 CT</td><td>0.565</td><td>0.465</td><td>0.0</td><td>0.343</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ44OTL4//74-20</td><td>0.354</td><td>0.662</td><td>0.0</td><td>0.338</td>
+                </tr>
+                
+                <tr>
+                    <td>S9QN92WJ//D59-48-8</td><td>0.565</td><td>0.44</td><td>0.0</td><td>0.335</td>
+                </tr>
+                
+                <tr>
+                    <td>RS29E92M//47</td><td>0.291</td><td>0.706</td><td>0.0</td><td>0.332</td>
+                </tr>
+                
+                <tr>
+                    <td>RRXRKN1Q//49</td><td>0.291</td><td>0.706</td><td>0.0</td><td>0.332</td>
+                </tr>
+                
+                <tr>
+                    <td>RRULSVBA//51</td><td>0.291</td><td>0.706</td><td>0.0</td><td>0.332</td>
+                </tr>
+                
+                <tr>
+                    <td>RR09VDW6//62</td><td>0.29</td><td>0.704</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RQVKLDLX//63</td><td>0.289</td><td>0.703</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RQHUEI6N//74-37-CT</td><td>0.519</td><td>0.474</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RRDA61MW//58</td><td>0.29</td><td>0.704</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RRKD4KI7//56</td><td>0.29</td><td>0.704</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RRNHDFXP//55</td><td>0.29</td><td>0.704</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RRRUAJIN//53</td><td>0.29</td><td>0.704</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RR9L73WC//59</td><td>0.29</td><td>0.704</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RR30OABW//61</td><td>0.29</td><td>0.704</td><td>0.0</td><td>0.331</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ5BU910//73</td><td>0.288</td><td>0.702</td><td>0.0</td><td>0.33</td>
+                </tr>
+                
+                <tr>
+                    <td>RQFGTBSJ//69</td><td>0.289</td><td>0.702</td><td>0.0</td><td>0.33</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ7SF9TF//72</td><td>0.289</td><td>0.702</td><td>0.0</td><td>0.33</td>
+                </tr>
+                
+                <tr>
+                    <td>RQKTFCF1//67</td><td>0.289</td><td>0.702</td><td>0.0</td><td>0.33</td>
+                </tr>
+                
+                <tr>
+                    <td>RQAA8TM4//71</td><td>0.289</td><td>0.702</td><td>0.0</td><td>0.33</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ9PISCN//89</td><td>0.287</td><td>0.7</td><td>0.0</td><td>0.329</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2WB0PA//79-1-CT</td><td>0.148</td><td>0.374</td><td>0.458</td><td>0.327</td>
+                </tr>
+                
+                <tr>
+                    <td>S5P2246G//D1</td><td>0.3</td><td>0.674</td><td>0.0</td><td>0.325</td>
+                </tr>
+                
+                <tr>
+                    <td>RS1HX76K//48</td><td>0.291</td><td>0.681</td><td>0.0</td><td>0.324</td>
+                </tr>
+                
+                <tr>
+                    <td>RS30TAWM//46</td><td>0.291</td><td>0.681</td><td>0.0</td><td>0.324</td>
+                </tr>
+                
+                <tr>
+                    <td>RS40I8FR//45</td><td>0.291</td><td>0.681</td><td>0.0</td><td>0.324</td>
+                </tr>
+                
+                <tr>
+                    <td>RS53WD64//44</td><td>0.291</td><td>0.682</td><td>0.0</td><td>0.324</td>
+                </tr>
+                
+                <tr>
+                    <td>RRH7CSX5//57</td><td>0.29</td><td>0.679</td><td>0.0</td><td>0.323</td>
+                </tr>
+                
+                <tr>
+                    <td>RRQJE09U//54</td><td>0.29</td><td>0.679</td><td>0.0</td><td>0.323</td>
+                </tr>
+                
+                <tr>
+                    <td>RR5OPPNV//60</td><td>0.29</td><td>0.679</td><td>0.0</td><td>0.323</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ351XTF//74</td><td>0.288</td><td>0.677</td><td>0.0</td><td>0.322</td>
+                </tr>
+                
+                <tr>
+                    <td>RQI6UR6H//68</td><td>0.289</td><td>0.678</td><td>0.0</td><td>0.322</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ38R785//76</td><td>0.288</td><td>0.677</td><td>0.0</td><td>0.322</td>
+                </tr>
+                
+                <tr>
+                    <td>RQAKP3CS//90</td><td>0.287</td><td>0.675</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3227SQ//77</td><td>0.288</td><td>0.676</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2NBO45//79</td><td>0.288</td><td>0.676</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4RVMH0//84</td><td>0.287</td><td>0.675</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ5HTS99//85</td><td>0.287</td><td>0.675</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ6M1DXH//86</td><td>0.287</td><td>0.675</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ7JG075//87</td><td>0.287</td><td>0.675</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQB7NGUI//91</td><td>0.287</td><td>0.675</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2O35AP//81</td><td>0.288</td><td>0.676</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2U2NH2//78</td><td>0.288</td><td>0.676</td><td>0.0</td><td>0.321</td>
+                </tr>
+                
+                <tr>
+                    <td>SR2JKGWT/80</td><td>0.295</td><td>0.664</td><td>0.0</td><td>0.32</td>
+                </tr>
+                
+                <tr>
+                    <td>S5OVJFN8//D3</td><td>0.289</td><td>0.653</td><td>0.0</td><td>0.314</td>
+                </tr>
+                
+                <tr>
+                    <td>SAHF4495//D59-68-1-CT</td><td>0.499</td><td>0.434</td><td>0.0</td><td>0.311</td>
+                </tr>
+                
+                <tr>
+                    <td>S8K73W3V//D59-31-1-CT</td><td>0.499</td><td>0.434</td><td>0.0</td><td>0.311</td>
+                </tr>
+                
+                <tr>
+                    <td>SAA3VNQU//D59-63-1-CT</td><td>0.499</td><td>0.434</td><td>0.0</td><td>0.311</td>
+                </tr>
+                
+                <tr>
+                    <td>S8E32U09//D59-26-1-CT</td><td>0.499</td><td>0.434</td><td>0.0</td><td>0.311</td>
+                </tr>
+                
+                <tr>
+                    <td>S5OSJNC8//D4</td><td>0.284</td><td>0.644</td><td>0.0</td><td>0.309</td>
+                </tr>
+                
+                <tr>
+                    <td>S5OQBC3W//D5</td><td>0.279</td><td>0.634</td><td>0.0</td><td>0.304</td>
+                </tr>
+                
+                <tr>
+                    <td>S5ONBJQT//D6</td><td>0.274</td><td>0.624</td><td>0.0</td><td>0.299</td>
+                </tr>
+                
+                <tr>
+                    <td>S5PE16WJ//D2</td><td>0.295</td><td>0.59</td><td>0.0</td><td>0.295</td>
+                </tr>
+                
+                <tr>
+                    <td>S5OKBRG7//D7</td><td>0.269</td><td>0.614</td><td>0.0</td><td>0.294</td>
+                </tr>
+                
+                <tr>
+                    <td>S7TF8XFQ//D55</td><td>0.05</td><td>0.062</td><td>0.75</td><td>0.287</td>
+                </tr>
+                
+                <tr>
+                    <td>S8GBE6DU//D37-5</td><td>0.234</td><td>0.597</td><td>0.0</td><td>0.277</td>
+                </tr>
+                
+                <tr>
+                    <td>S8JQ58J9//D37-7</td><td>0.234</td><td>0.597</td><td>0.0</td><td>0.277</td>
+                </tr>
+                
+                <tr>
+                    <td>S8D5METU//D37-4</td><td>0.234</td><td>0.597</td><td>0.0</td><td>0.277</td>
+                </tr>
+                
+                <tr>
+                    <td>S8QN49G7//D37-16</td><td>0.234</td><td>0.597</td><td>0.0</td><td>0.277</td>
+                </tr>
+                
+                <tr>
+                    <td>S8B6AK5T//D37-3</td><td>0.234</td><td>0.597</td><td>0.0</td><td>0.277</td>
+                </tr>
+                
+                <tr>
+                    <td>S89RV4VL//D37-2</td><td>0.234</td><td>0.597</td><td>0.0</td><td>0.277</td>
+                </tr>
+                
+                <tr>
+                    <td>S8MGW5D3//D37-13</td><td>0.234</td><td>0.597</td><td>0.0</td><td>0.277</td>
+                </tr>
+                
+                <tr>
+                    <td>S7VJ3F5T//D59-7</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S7XMVW0M//D59-9</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S7UK5WW1//D59-6</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S806545G//D59-10</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S89ANS5P//D59-19</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S885QRIM//D59-18</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S873TJ4G//D59-17</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S814B5B6//D59-11</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S8646LTF//D59-16</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S84734ES//D59-14</td><td>0.233</td><td>0.594</td><td>0.0</td><td>0.276</td>
+                </tr>
+                
+                <tr>
+                    <td>S62H68M6//D18-5CT</td><td>0.236</td><td>0.575</td><td>0.0</td><td>0.27</td>
+                </tr>
+                
+                <tr>
+                    <td>S68C80M4//D18-1</td><td>0.236</td><td>0.575</td><td>0.0</td><td>0.27</td>
+                </tr>
+                
+                <tr>
+                    <td>S66F4H2C//D18-2</td><td>0.236</td><td>0.575</td><td>0.0</td><td>0.27</td>
+                </tr>
+                
+                <tr>
+                    <td>S63NK5H8//D18-4</td><td>0.236</td><td>0.575</td><td>0.0</td><td>0.27</td>
+                </tr>
+                
+                <tr>
+                    <td>S8TWL889//D37-17</td><td>0.234</td><td>0.573</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S5VC2NN1//D12</td><td>0.243</td><td>0.564</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S8LPH3OJ//D37-14</td><td>0.234</td><td>0.573</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S8KLBHKI//D37-8</td><td>0.234</td><td>0.573</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S9362F3T//D37-18CT</td><td>0.234</td><td>0.573</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S8I411LT//D37-6</td><td>0.234</td><td>0.573</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S8NFTLTD//D37-15</td><td>0.234</td><td>0.573</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S85UOAUI//D42-1</td><td>0.234</td><td>0.573</td><td>0.0</td><td>0.269</td>
+                </tr>
+                
+                <tr>
+                    <td>S7T5I6LW//D59-5</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S7S2TH5D//D59-4</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S7R36JTR//D59-3</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S82CXD65//D59-13</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S7Q6HER3//D59-2</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S86A6896//D53-4</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S860FGKE//D53-3</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S853QBGQ//D53-2</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S7WIQCFE//D59-8</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S85GGRDN//D59-15</td><td>0.233</td><td>0.57</td><td>0.0</td><td>0.268</td>
+                </tr>
+                
+                <tr>
+                    <td>S7CN1LDA//189-4</td><td>0.224</td><td>0.578</td><td>0.0</td><td>0.267</td>
+                </tr>
+                
+                <tr>
+                    <td>S7BSKRFB//189-5</td><td>0.224</td><td>0.578</td><td>0.0</td><td>0.267</td>
+                </tr>
+                
+                <tr>
+                    <td>S78157MX//189-8</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>S6XPQQ6E//189-14</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>S75OJP8F//189-9</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>S7058P58//189-13</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>S7AAX8X3//189-7</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>S7AKO0K3//189-6</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>S73NP0J2//189-10</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>S71G5AC8//189-11</td><td>0.224</td><td>0.553</td><td>0.0</td><td>0.259</td>
+                </tr>
+                
+                <tr>
+                    <td>RRBTI956//59-2</td><td>0.234</td><td>0.54</td><td>0.0</td><td>0.258</td>
+                </tr>
+                
+                <tr>
+                    <td>S5OHC14B//D8</td><td>0.263</td><td>0.505</td><td>0.0</td><td>0.256</td>
+                </tr>
+                
+                <tr>
+                    <td>S5QI6POO//D9</td><td>0.258</td><td>0.496</td><td>0.0</td><td>0.251</td>
+                </tr>
+                
+                <tr>
+                    <td>RQL85UHJ//68-3</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.248</td>
+                </tr>
+                
+                <tr>
+                    <td>RQXM7I3A//59-18</td><td>0.204</td><td>0.54</td><td>0.0</td><td>0.248</td>
+                </tr>
+                
+                <tr>
+                    <td>RQJ7B5LL//68-1</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.248</td>
+                </tr>
+                
+                <tr>
+                    <td>RR7L3RTG//59-6</td><td>0.204</td><td>0.54</td><td>0.0</td><td>0.248</td>
+                </tr>
+                
+                <tr>
+                    <td>RR5H9AOR//59-8</td><td>0.204</td><td>0.54</td><td>0.0</td><td>0.248</td>
+                </tr>
+                
+                <tr>
+                    <td>RQK7030R//68-2</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.248</td>
+                </tr>
+                
+                <tr>
+                    <td>RQMA3527//68-4</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.248</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3IHW6E//74-9</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3M949X//74-22</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4CWPID//74-16</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3OHGEU//74-11</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3E19WA//74-8</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ38R6MC//74-7</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ3TPJNW//74-12</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>SR31ARAI//74-5</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4HFDQA//74-17</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4AOEG4//74-15</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4KF5UF//74-18</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ44OU50//74-14</td><td>0.204</td><td>0.539</td><td>0.0</td><td>0.247</td>
+                </tr>
+                
+                <tr>
+                    <td>S5S3B69E//D10</td><td>0.253</td><td>0.485</td><td>0.0</td><td>0.246</td>
+                </tr>
+                
+                <tr>
+                    <td>RT82CO7C//D34-3</td><td>0.206</td><td>0.519</td><td>0.0</td><td>0.242</td>
+                </tr>
+                
+                <tr>
+                    <td>RT9A9GXW//D34-1</td><td>0.206</td><td>0.519</td><td>0.0</td><td>0.242</td>
+                </tr>
+                
+                <tr>
+                    <td>RT8L2QFF//D34-2</td><td>0.206</td><td>0.519</td><td>0.0</td><td>0.242</td>
+                </tr>
+                
+                <tr>
+                    <td>S5TGG2EI//D11</td><td>0.248</td><td>0.475</td><td>0.0</td><td>0.241</td>
+                </tr>
+                
+                <tr>
+                    <td>RQN6QA89//68-5</td><td>0.204</td><td>0.514</td><td>0.0</td><td>0.24</td>
+                </tr>
+                
+                <tr>
+                    <td>RR6FFC1D//59-7</td><td>0.204</td><td>0.516</td><td>0.0</td><td>0.24</td>
+                </tr>
+                
+                <tr>
+                    <td>RR4MSGN9//59-9</td><td>0.204</td><td>0.516</td><td>0.0</td><td>0.24</td>
+                </tr>
+                
+                <tr>
+                    <td>RR4ATDQC//59-10</td><td>0.204</td><td>0.516</td><td>0.0</td><td>0.24</td>
+                </tr>
+                
+                <tr>
+                    <td>RR8NQHGC//59-5</td><td>0.204</td><td>0.516</td><td>0.0</td><td>0.24</td>
+                </tr>
+                
+                <tr>
+                    <td>RR9U6EJ3//59-1</td><td>0.204</td><td>0.516</td><td>0.0</td><td>0.24</td>
+                </tr>
+                
+                <tr>
+                    <td>RR9JO7KN//59-4</td><td>0.204</td><td>0.516</td><td>0.0</td><td>0.24</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ36ITU7//74-2</td><td>0.204</td><td>0.514</td><td>0.0</td><td>0.239</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ4C7A7X//74-19</td><td>0.204</td><td>0.514</td><td>0.0</td><td>0.239</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ38R73O//74-1</td><td>0.204</td><td>0.514</td><td>0.0</td><td>0.239</td>
+                </tr>
+                
+                <tr>
+                    <td>S68L7B9D//D18</td><td>0.211</td><td>0.504</td><td>0.0</td><td>0.239</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2TB80M//74-3</td><td>0.204</td><td>0.514</td><td>0.0</td><td>0.239</td>
+                </tr>
+                
+                <tr>
+                    <td>RQBDN1ED//92-CT</td><td>0.203</td><td>0.511</td><td>0.0</td><td>0.238</td>
+                </tr>
+                
+                <tr>
+                    <td>S88D9C3N//D40-1</td><td>0.234</td><td>0.474</td><td>0.0</td><td>0.236</td>
+                </tr>
+                
+                <tr>
+                    <td>S84NIXPC//D37-1</td><td>0.234</td><td>0.474</td><td>0.0</td><td>0.236</td>
+                </tr>
+                
+                <tr>
+                    <td>S8EPIACX//D40-3</td><td>0.234</td><td>0.474</td><td>0.0</td><td>0.236</td>
+                </tr>
+                
+                <tr>
+                    <td>S84J2977//D53-1</td><td>0.233</td><td>0.472</td><td>0.0</td><td>0.235</td>
+                </tr>
+                
+                <tr>
+                    <td>S81W0I6H//D59-12</td><td>0.233</td><td>0.471</td><td>0.0</td><td>0.235</td>
+                </tr>
+                
+                <tr>
+                    <td>S5WXFFCR//D13</td><td>0.237</td><td>0.456</td><td>0.0</td><td>0.231</td>
+                </tr>
+                
+                <tr>
+                    <td>S62DF24C//D15</td><td>0.227</td><td>0.46</td><td>0.0</td><td>0.229</td>
+                </tr>
+                
+                <tr>
+                    <td>S8J1FLEQ//D40-4</td><td>0.234</td><td>0.449</td><td>0.0</td><td>0.228</td>
+                </tr>
+                
+                <tr>
+                    <td>S8BMQAWE//D40-2</td><td>0.234</td><td>0.449</td><td>0.0</td><td>0.228</td>
+                </tr>
+                
+                <tr>
+                    <td>S95TCFBF//D37-20</td><td>0.234</td><td>0.449</td><td>0.0</td><td>0.228</td>
+                </tr>
+                
+                <tr>
+                    <td>S943H17G//D37-19</td><td>0.234</td><td>0.449</td><td>0.0</td><td>0.228</td>
+                </tr>
+                
+                <tr>
+                    <td>S87L2SME//D44-1</td><td>0.234</td><td>0.449</td><td>0.0</td><td>0.228</td>
+                </tr>
+                
+                <tr>
+                    <td>S61G0G0W//D14</td><td>0.233</td><td>0.445</td><td>0.0</td><td>0.226</td>
+                </tr>
+                
+                <tr>
+                    <td>S7DAPFTG//189-3</td><td>0.224</td><td>0.454</td><td>0.0</td><td>0.226</td>
+                </tr>
+                
+                <tr>
+                    <td>S7OPTMG9//D59-1</td><td>0.233</td><td>0.446</td><td>0.0</td><td>0.226</td>
+                </tr>
+                
+                <tr>
+                    <td>S644J141//D16</td><td>0.222</td><td>0.45</td><td>0.0</td><td>0.224</td>
+                </tr>
+                
+                <tr>
+                    <td>RRAVC7SP//59-3-B1</td><td>0.12</td><td>0.229</td><td>0.292</td><td>0.213</td>
+                </tr>
+                
+                <tr>
+                    <td>S69FM59I//D17</td><td>0.217</td><td>0.415</td><td>0.0</td><td>0.211</td>
+                </tr>
+                
+                <tr>
+                    <td>S84S1M0G//D37-1-1</td><td>0.167</td><td>0.467</td><td>0.0</td><td>0.211</td>
+                </tr>
+                
+                <tr>
+                    <td>S7I8CKKC//D59-3-7</td><td>0.165</td><td>0.465</td><td>0.0</td><td>0.21</td>
+                </tr>
+                
+                <tr>
+                    <td>S8JGEGPR//D37-6-2</td><td>0.167</td><td>0.442</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S8KEKHV7//D37-6-3</td><td>0.167</td><td>0.442</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S8IVOEH2//D37-6-1</td><td>0.167</td><td>0.442</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S6TMKI7P//D25</td><td>0.175</td><td>0.434</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S859PVF1//D42-2-CT</td><td>0.167</td><td>0.442</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S88WOSRW//D44-2-CT</td><td>0.167</td><td>0.442</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S8N64U42//D37-14-1CT</td><td>0.167</td><td>0.442</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S85AHD29//D37-1-3CT</td><td>0.167</td><td>0.442</td><td>0.0</td><td>0.203</td>
+                </tr>
+                
+                <tr>
+                    <td>S7CWQBXF//D59-3-10</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7MARHA0//D59-3-5</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7WF15FQ//D59-5-3</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7K3X81U//D59-3-6</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7N5XQHB//D59-3-2</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7FUA7XL//D59-3-8</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7DXW5GE//D59-3-9</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7NTVW28//D59-3-4</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7CKR95N//D59-3-11</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7PI254F//D59-3-1</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7M72A6O//D59-3-3</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7UGEPQA//D59-5-1</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S7VJ3FC1//D59-5-2</td><td>0.165</td><td>0.44</td><td>0.0</td><td>0.202</td>
+                </tr>
+                
+                <tr>
+                    <td>S6B014RF//D19</td><td>0.207</td><td>0.396</td><td>0.0</td><td>0.201</td>
+                </tr>
+                
+                <tr>
+                    <td>S6DKBCST//D20</td><td>0.201</td><td>0.386</td><td>0.0</td><td>0.196</td>
+                </tr>
+                
+                <tr>
+                    <td>S70SFJ8S//D27</td><td>0.165</td><td>0.415</td><td>0.0</td><td>0.194</td>
+                </tr>
+                
+                <tr>
+                    <td>S7ALFFNX//189-7-1</td><td>0.157</td><td>0.425</td><td>0.0</td><td>0.194</td>
+                </tr>
+                
+                <tr>
+                    <td>S6X7S4UK//189-15-CT</td><td>0.157</td><td>0.425</td><td>0.0</td><td>0.194</td>
+                </tr>
+                
+                <tr>
+                    <td>S6GW2MLG//D21</td><td>0.196</td><td>0.376</td><td>0.0</td><td>0.19</td>
+                </tr>
+                
+                <tr>
+                    <td>S6JOCF2T//D22</td><td>0.191</td><td>0.366</td><td>0.0</td><td>0.186</td>
+                </tr>
+                
+                <tr>
+                    <td>S7K8FV77//D59</td><td>0.0</td><td>0.097</td><td>0.458</td><td>0.185</td>
+                </tr>
+                
+                <tr>
+                    <td>S6MND6XT//D23</td><td>0.186</td><td>0.356</td><td>0.0</td><td>0.18</td>
+                </tr>
+                
+                <tr>
+                    <td>S6POMA23//D24</td><td>0.181</td><td>0.347</td><td>0.0</td><td>0.176</td>
+                </tr>
+                
+                <tr>
+                    <td>S68WEX0Q//D18-1-1CT</td><td>0.168</td><td>0.347</td><td>0.0</td><td>0.172</td>
+                </tr>
+                
+                <tr>
+                    <td>SA4W2N0P//D59-48-15</td><td>0.165</td><td>0.342</td><td>0.0</td><td>0.169</td>
+                </tr>
+                
+                <tr>
+                    <td>S85IP4H6//D59-16-1CT</td><td>0.165</td><td>0.342</td><td>0.0</td><td>0.169</td>
+                </tr>
+                
+                <tr>
+                    <td>S6WGD6QK//D26</td><td>0.17</td><td>0.326</td><td>0.0</td><td>0.165</td>
+                </tr>
+                
+                <tr>
+                    <td>RVWXPSPU//D6-1-CT</td><td>0.122</td><td>0.357</td><td>0.0</td><td>0.16</td>
+                </tr>
+                
+                <tr>
+                    <td>RTIES7OX//D31-1-CT</td><td>0.121</td><td>0.355</td><td>0.0</td><td>0.159</td>
+                </tr>
+                
+                <tr>
+                    <td>RRAB59FH//59-3-A1</td><td>0.12</td><td>0.352</td><td>0.0</td><td>0.157</td>
+                </tr>
+                
+                <tr>
+                    <td>RQX20JL3//59-19-CT</td><td>0.12</td><td>0.352</td><td>0.0</td><td>0.157</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ6R9HBI//86-1-CT</td><td>0.118</td><td>0.349</td><td>0.0</td><td>0.156</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ52UWT5//80-1-CT</td><td>0.118</td><td>0.35</td><td>0.0</td><td>0.156</td>
+                </tr>
+                
+                <tr>
+                    <td>S5PFI312//D2X1</td><td>0.152</td><td>0.316</td><td>0.0</td><td>0.156</td>
+                </tr>
+                
+                <tr>
+                    <td>S5OWAURA//D2X2</td><td>0.152</td><td>0.316</td><td>0.0</td><td>0.156</td>
+                </tr>
+                
+                <tr>
+                    <td>S74SM4JO//D28</td><td>0.16</td><td>0.306</td><td>0.0</td><td>0.155</td>
+                </tr>
+                
+                <tr>
+                    <td>S7URMHAB//D35</td><td>0.124</td><td>0.335</td><td>0.0</td><td>0.153</td>
+                </tr>
+                
+                <tr>
+                    <td>S77KVV12//D29</td><td>0.155</td><td>0.297</td><td>0.0</td><td>0.151</td>
+                </tr>
+                
+                <tr>
+                    <td>S86S4VRT//D37-1-X-1</td><td>0.099</td><td>0.338</td><td>0.0</td><td>0.146</td>
+                </tr>
+                
+                <tr>
+                    <td>S7ATNEM5//D30</td><td>0.15</td><td>0.287</td><td>0.0</td><td>0.145</td>
+                </tr>
+                
+                <tr>
+                    <td>S841T57R//D37</td><td>0.114</td><td>0.315</td><td>0.0</td><td>0.143</td>
+                </tr>
+                
+                <tr>
+                    <td>S7EULF2I//D31</td><td>0.144</td><td>0.276</td><td>0.0</td><td>0.14</td>
+                </tr>
+                
+                <tr>
+                    <td>S8L1IVBG//D37-6-4-CT</td><td>0.099</td><td>0.314</td><td>0.0</td><td>0.138</td>
+                </tr>
+                
+                <tr>
+                    <td>S7ML9NUP//D59-3-5-1</td><td>0.099</td><td>0.311</td><td>0.0</td><td>0.136</td>
+                </tr>
+                
+                <tr>
+                    <td>S81H1N5Q//D59-12-1-CT</td><td>0.099</td><td>0.311</td><td>0.0</td><td>0.136</td>
+                </tr>
+                
+                <tr>
+                    <td>S7XG6WWF//D59-5-4-CT</td><td>0.099</td><td>0.311</td><td>0.0</td><td>0.136</td>
+                </tr>
+                
+                <tr>
+                    <td>S7KO6AMP//D32</td><td>0.139</td><td>0.267</td><td>0.0</td><td>0.135</td>
+                </tr>
+                
+                <tr>
+                    <td>S7NGG35B//D33</td><td>0.134</td><td>0.256</td><td>0.0</td><td>0.13</td>
+                </tr>
+                
+                <tr>
+                    <td>S783DILX//189-6-1-CT</td><td>0.092</td><td>0.298</td><td>0.0</td><td>0.13</td>
+                </tr>
+                
+                <tr>
+                    <td>S8530W8B//D40</td><td>0.098</td><td>0.286</td><td>0.0</td><td>0.128</td>
+                </tr>
+                
+                <tr>
+                    <td>S7R0WCF7//D34</td><td>0.129</td><td>0.247</td><td>0.0</td><td>0.125</td>
+                </tr>
+                
+                <tr>
+                    <td>RQMVQX85//66-1-CT</td><td>0.119</td><td>0.253</td><td>0.0</td><td>0.124</td>
+                </tr>
+                
+                <tr>
+                    <td>S86G5S8R//D42</td><td>0.088</td><td>0.265</td><td>0.0</td><td>0.118</td>
+                </tr>
+                
+                <tr>
+                    <td>S8065866//D36</td><td>0.118</td><td>0.226</td><td>0.0</td><td>0.115</td>
+                </tr>
+                
+                <tr>
+                    <td>S86JV1D6//D43</td><td>0.082</td><td>0.256</td><td>0.0</td><td>0.113</td>
+                </tr>
+                
+                <tr>
+                    <td>S84NIXJ3//D38</td><td>0.108</td><td>0.207</td><td>0.0</td><td>0.105</td>
+                </tr>
+                
+                <tr>
+                    <td>S84WIA2F//D39</td><td>0.103</td><td>0.197</td><td>0.0</td><td>0.1</td>
+                </tr>
+                
+                <tr>
+                    <td>S865NLKC//D41</td><td>0.092</td><td>0.177</td><td>0.0</td><td>0.09</td>
+                </tr>
+                
+                <tr>
+                    <td>RPUWQIFO//74-22-5-CT</td><td>0.034</td><td>0.212</td><td>0.0</td><td>0.082</td>
+                </tr>
+                
+                <tr>
+                    <td>S86ODNJ7//D44</td><td>0.078</td><td>0.147</td><td>0.0</td><td>0.075</td>
+                </tr>
+                
+                <tr>
+                    <td>RR6GW843//59-7-1-CT</td><td>0.034</td><td>0.188</td><td>0.0</td><td>0.074</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2O34P5//74-2-1-CT</td><td>0.034</td><td>0.187</td><td>0.0</td><td>0.073</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ2RSBDX//74-10-1-CT</td><td>0.034</td><td>0.187</td><td>0.0</td><td>0.073</td>
+                </tr>
+                
+                <tr>
+                    <td>RQ351XNN//74-3-1-CT</td><td>0.034</td><td>0.187</td><td>0.0</td><td>0.073</td>
+                </tr>
+                
+                <tr>
+                    <td>S7CT14OH//D59-3-10-1-CT</td><td>0.031</td><td>0.182</td><td>0.0</td><td>0.071</td>
+                </tr>
+                
+                <tr>
+                    <td>S7LWSE9U//D59-3-5-2-CT</td><td>0.031</td><td>0.182</td><td>0.0</td><td>0.071</td>
+                </tr>
+                
+                <tr>
+                    <td>S7MBIWHE//D59-3-3-1-CT</td><td>0.031</td><td>0.182</td><td>0.0</td><td>0.071</td>
+                </tr>
+                
+                <tr>
+                    <td>S86UD7R5//D45</td><td>0.072</td><td>0.137</td><td>0.0</td><td>0.07</td>
+                </tr>
+                
+                <tr>
+                    <td>S86WLITM//D46</td><td>0.067</td><td>0.127</td><td>0.0</td><td>0.064</td>
+                </tr>
+                
+                <tr>
+                    <td>S83RL7FF//D53</td><td>0.031</td><td>0.155</td><td>0.0</td><td>0.062</td>
+                </tr>
+                
+                <tr>
+                    <td>S872CQ0G//D47</td><td>0.062</td><td>0.117</td><td>0.0</td><td>0.06</td>
+                </tr>
+                
+                <tr>
+                    <td>S8005LC0//D54</td><td>0.026</td><td>0.146</td><td>0.0</td><td>0.057</td>
+                </tr>
+                
+                <tr>
+                    <td>S8763X5V//D48</td><td>0.056</td><td>0.107</td><td>0.0</td><td>0.054</td>
+                </tr>
+                
+                <tr>
+                    <td>S86FECA3//D49</td><td>0.052</td><td>0.097</td><td>0.0</td><td>0.05</td>
+                </tr>
+                
+                <tr>
+                    <td>S85JGM0G//D50</td><td>0.046</td><td>0.087</td><td>0.0</td><td>0.044</td>
+                </tr>
+                
+                <tr>
+                    <td>S7OJ4NLW//D57</td><td>0.01</td><td>0.116</td><td>0.0</td><td>0.042</td>
+                </tr>
+                
+                <tr>
+                    <td>S856Q41I//D51</td><td>0.041</td><td>0.077</td><td>0.0</td><td>0.039</td>
+                </tr>
+                
+                <tr>
+                    <td>S84736GE//D52</td><td>0.036</td><td>0.068</td><td>0.0</td><td>0.035</td>
+                </tr>
+                
+                <tr>
+                    <td>S7RO508P//D56</td><td>0.015</td><td>0.027</td><td>0.0</td><td>0.014</td>
+                </tr>
+                
+                <tr>
+                    <td>S7NHWU4V//D58</td><td>0.005</td><td>0.008</td><td>0.0</td><td>0.004</td>
+                </tr>
+                </tbody>
+</table>
+<a href="./main_total.html" class="float">
+<img src="..\resources\return_icon.png" width="40px" style="padding-top: 12px;">
+</a>
+<div class="label-container">
+<div class="label-text">Return</div>
+</div>

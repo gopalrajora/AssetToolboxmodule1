@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "Software\main\main.cmd", 1, True

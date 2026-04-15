@@ -1,0 +1,63 @@
+variables,function,factor
+cost_failure,linear,1.1
+cost_failure,linear,1.06
+customers_affected,linear,1.3
+external_condition,linear,1.15
+H1_ Cost_of_failure,linear,1.1
+H1_ Transformer_external_condition,linear,1.2
+H1_age_years,incremental,5
+H1_Clients affected,linear,1.03
+H1_fail_prob,exponential,-0.04
+H2_ Cost_of_failure,linear,1.06
+H2_ Customers affected,linear,1.3
+H2_criticality,linear,1.05
+H2_ENS_in_fault,linear,1.04
+H2_failure_probaility,exponential,-0.04
+H3_ Value of Lost Load,linear,1.01
+H3_criticallity,linear,1.2
+H3_energy,linear,1.05
+H3_Mean_load,linear,1.04
+H4_Age_dependent_unavailability,linear,1.02
+H4_Failure_cost,linear,1.03
+H5_over_50,linear,1.03
+repair_time,linear,1.1
+switchings_operations_2020,linear,1.3
+value_lost_load,linear,1.05
+H1_Maint_cycles_A,linear,1
+H2_Review_A,linear,1
+H3_Maint_cycles_B,linear,1
+H4_Review_B,linear,1
+H1_KPI_weighted_power,linear,1.05
+H2_birdlife_KPI,linear,1.02
+H3_defecs_severity_KPI,linear,1.05
+H2_Criticity,linear,1.05
+H3_Condition,linear,1.1
+H4_Risk,linear,1.1
+H2_defects,linear,1.15
+H3_defect_severity,linear,1.05
+H1_important_customers,linear,1
+H2_Customers,linear,1
+H3_power contracted,linear,1
+H4_Cut_power,linear,1
+H2_power_rating,linear,1.1
+H3_contribution_in_feeder,linear,1
+H4_faults,linear,1.1
+H1_fault_duration,linear,1
+H2_faults,linear,1.1
+H3_defects,linear,1
+H4_defect_severity,linear,1.05
+H3_KPI_defects_severity,linear,1.05
+H1_Age,incremental,5
+H2_failure_probability,exponential,-0.05
+H3_KPI_weighted_power,,
+H4_Criticity,linear,1.15
+H3_Age_dependent_unavailability,linear,1.15
+H4_load_over_50,linear,1.1
+H3_Mean_load (Y),linear,1.1
+H4_Failure_cost (?),linear,1.15
+rateA(summer),linear,1.05
+rateB(spring),linear,1.05
+rateC(winter),linear,1.05
+load>50% (%),linear,1.1
+Average loading (%),linear,1.15
+age_years,incremental,5
